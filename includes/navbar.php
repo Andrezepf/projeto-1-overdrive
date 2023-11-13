@@ -14,7 +14,7 @@
           <a class="nav-link" href="login.php">Login</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="register.php">Register</a>
+          <a class="nav-link" href="cadastro_u.php">Cadastro</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="pesquisa.php">Pesquisa</a>
