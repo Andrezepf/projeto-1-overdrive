@@ -14,16 +14,16 @@ require './conexao.php';
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Editar usuário
-                        <a href="./tabela_u.php" class="btn btn-danger float-end">Voltar</a>
+                    <h4>Editar Empresa
+                        <a href="./tabela_e.php" class="btn btn-danger float-end">Voltar</a>
                     </h4>
                 </div>
                 <div class="card-body">
 
                     <?php
                     if(isset($_GET['id'])){
-                        $usuario_id = mysqli_real_escape_string($mysqli, $_GET['id']);
-                        $query = "SELECT * FROM usuario WHERE u_id='$usuario_id'";
+                        $empresa_id = mysqli_real_escape_string($mysqli, $_GET['id']);
+                        $query = "SELECT * FROM empresa WHERE e_id='$empresa_id'";
                         $query_run = mysqli_query($mysqli, $query);
 
                         if(mysqli_num_rows($query_run) > 0){
@@ -31,38 +31,35 @@ require './conexao.php';
                             ?>
                             
                             <form action="./code.php" method="post">
-                                <input type="hidden" name="usuario_id" value="<?= $dados['u_id']; ?>">
+                                <input type="hidden" name="empresa_id" value="<?= $dados['e_id']; ?>">
 
                                 <div class="mb-3">
+                                <div class="mb-3">
+                                    <label>CNPJ</label>
+                                    <input type="text" name="cnpj" value="<?=$dados['cnpj']; ?>" class="form-control">
+                                </div>
                                     <label>Nome</label>
                                     <input type="text" name="nome" value="<?=$dados['nome']; ?>" class="form-control">
                                 </div>
                                 <div class="mb-3">
-                                    <label>CPF</label>
-                                    <input type="text" name="cpf" value="<?=$dados['cpf']; ?>" class="form-control">
-                                </div>
-                                <div class="mb-3">
-                                    <label>CNH</label>
-                                    <input type="text" name="cnh" value="<?=$dados['cnh']; ?>" class="form-control">
-                                </div>
-                                <div class="mb-3">
-                                    <label>Telefone</label>
-                                    <input type="text" name="telefone" value="<?=$dados['telefone']; ?>" class="form-control">
+                                    <label>Nome Fantasia</label>
+                                    <input type="text" name="nome_fantasia" value="<?=$dados['nome_fantasia']; ?>" class="form-control">
                                 </div>
                                 <div class="mb-3">
                                     <label>Endereço</label>
                                     <input type="text" name="endereco" value="<?=$dados['endereco']; ?>" class="form-control">
                                 </div>
                                 <div class="mb-3">
-                                    <label>Carro</label>
-                                    <input type="text" name="carro" value="<?=$dados['carro']; ?>" class="form-control">
-                                </div>
+                                    <label>Telefone</label>
+                                    <input type="text" name="telefone" value="<?=$dados['telefone']; ?>" class="form-control">
+                                </div>                                
                                 <div class="mb-3">
-                                    <label>Empresa</label>
-                                    <input type="text" name="empresa" value="<?=$dados['empresa']; ?>" class="form-control">
+                                    <label>Responsavel</label>
+                                    <input type="text" name="responsavel" value="<?=$dados['responsavel']; ?>" class="form-control">
                                 </div>
+                                
                                 <div class="mb-3">
-                                    <button type="submit" name="edita_u" class="btn btn-primary">Salvar mudanças</button>
+                                    <button type="submit" name="edita_e" class="btn btn-primary">Salvar mudanças</button>
                                 </div>
                             </form>
                             

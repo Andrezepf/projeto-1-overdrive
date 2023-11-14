@@ -14,43 +14,39 @@ require './conexao.php';
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Adicionar usuário
-                        <a href="./tabela_u.php" class="btn btn-danger float-end">Voltar</a>
+                    <h4>Adicionar empresa
+                        <a href="./tabela_e.php" class="btn btn-danger float-end">Voltar</a>
                     </h4>
                 </div>
                 <div class="card-body">
                     <form action="./code.php" method="post">
 
                         <div class="mb-3">
+                            <label>CNPJ</label>
+                            <input type="text" name="cnpj" class="form-control">
+                        </div>
+                        <div class="mb-3">
                             <label>Nome</label>
                             <input type="text" name="nome" class="form-control">
                         </div>
                         <div class="mb-3">
-                            <label>CPF</label>
-                            <input type="text" name="cpf" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label>CNH</label>
-                            <input type="text" name="cnh" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label>Telefone</label>
-                            <input type="text" name="telefone" class="form-control">
+                            <label>Nome Fantasia</label>
+                            <input type="text" name="nome_fantasia" class="form-control">
                         </div>
                         <div class="mb-3">
                             <label>Endereço</label>
                             <input type="text" name="endereco" class="form-control">
                         </div>
                         <div class="mb-3">
-                            <label>Carro</label>
-                            <input type="text" name="carro" class="form-control">
+                            <label>Telefone</label>
+                            <input type="text" name="telefone" class="form-control">
                         </div>
                         <div class="mb-3">
-                            <label>Empresa</label>
-                            <input type="text" name="empresa" class="form-control">
+                            <label>Responsável</label>
+                            <input type="text" name="responsavel" class="form-control">
                         </div>
                         <div class="mb-3">
-                            <button type="submit" name="cadastra_u" class="btn btn-primary">Cadastrar usuário</button>
+                            <button type="submit" name="cadastra_e" class="btn btn-primary">Cadastrar empresa</button>
                         </div>
                     </form>
                 </div>
