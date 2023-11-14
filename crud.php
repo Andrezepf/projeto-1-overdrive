@@ -48,9 +48,10 @@ include('./conexao.php');
                                         <td><?php echo $dados['carro']; ?></td>
                                         <td><?php echo $dados['empresa']; ?></td>
                                         <td>
-                                            <a href="" class="btn btn-info btn-sm">????</a>
                                             <a href="editar_u.php?id=<?= $dados['u_id']; ?>" class="btn btn-success btn-sm">Editar</a>
-                                            <a href="" class="btn btn-danger btn-sm">Excluir</a>
+                                            <form action="code.php" method="post" class="d-inline">
+                                            <button type="submit" name="excluir_usuario" value="<?= $dados['u_id']; ?>" class="btn btn-danger btn-sm">Excluir</button>
+                                            </form>
                                         </td>
                                         </tr>
 

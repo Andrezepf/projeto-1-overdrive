@@ -3,6 +3,24 @@ session_start();
 include('./conexao.php');
 
 
+if(isset($_POST['excluir_usuario'])){
+    $usuario_id = mysqli_real_escape_string($mysqli, $_POST['excluir_usuario']);
+
+    $query = "DELETE FROM usuario WHERE u_id='$usuario_id'";
+    $query_run = mysqli_query($mysqli, $query);
+
+    if($query_run){
+        $_SESSION['message'] = "Usuário excluido com sucesso!";
+        header("Location: crud.php");
+        exit(0);
+    } else {
+        $_SESSION['message'] = "Usuário NÃO foi excluido!";
+        header("Location: crud.php");
+        exit(0);
+    }
+}
+
+
 if(isset($_POST['edita_u'])){
     $usuario_id = mysqli_real_escape_string($mysqli, $_POST['usuario_id']);
     $nome = mysqli_real_escape_string($mysqli, $_POST['nome']);
