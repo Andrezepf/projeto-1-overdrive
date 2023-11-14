@@ -44,7 +44,7 @@ include('./conexao.php');
                                         <td><?php echo $dados['cpf']; ?></td>
                                         <td><?php echo $dados['cnh']; ?></td>
                                         <td><?php echo $dados['telefone']; ?></td>
-                                        <td><?php echo $dados['endereço']; ?></td>
+                                        <td><?php echo $dados['endereco']; ?></td>
                                         <td><?php echo $dados['carro']; ?></td>
                                         <td><?php echo $dados['empresa']; ?></td>
                                     </tr>
@@ -72,7 +72,7 @@ include('./conexao.php');
                                         <td><?php echo $dados['cpf']; ?></td>
                                         <td><?php echo $dados['cnh']; ?></td>
                                         <td><?php echo $dados['telefone']; ?></td>
-                                        <td><?php echo $dados['endereço']; ?></td>
+                                        <td><?php echo $dados['endereco']; ?></td>
                                         <td><?php echo $dados['carro']; ?></td>
                                         <td><?php echo $dados['empresa']; ?></td>
                                     </tr>

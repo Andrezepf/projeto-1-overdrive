@@ -19,6 +19,9 @@
         <li class="nav-item">
           <a class="nav-link" href="pesquisa.php">Pesquisa</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="crud.php">CRUD</a>
+        </li>
       </ul>
       
     </div>
