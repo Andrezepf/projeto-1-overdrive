@@ -2,7 +2,7 @@
 session_start();
 include('./includes/header.php');
 include('./includes/navbar.php');
-include('./conexao.php');
+require 'conexao.php';
 ?>
 
 <div class="container mt-4">

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('./conexao.php');
+require 'conexao.php';
 
 
 if(isset($_POST['excluir_usuario'])){
