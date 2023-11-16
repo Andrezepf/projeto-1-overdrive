@@ -26,7 +26,13 @@
           <a class="nav-link" href="./tabela_u.php">Tabela U</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="./tabela_up.php">Tabela UP</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="./tabela_e.php">Tabela E</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./tabela_ep.php">Tabela EP</a>
         </li>
       </ul>
       
