@@ -11,11 +11,11 @@ if(isset($_POST['excluir_usuario'])){
 
     if($query_run){
         $_SESSION['message'] = "Usuário excluido com sucesso!";
-        header("Location: tabela_u.php");
+        header("Location: tabela_up.php");
         exit(0);
     } else {
         $_SESSION['message'] = "Usuário NÃO foi excluido!";
-        header("Location: tabela_u.php");
+        header("Location: tabela_up.php");
         exit(0);
     }
 }
@@ -28,11 +28,11 @@ if(isset($_POST['excluir_empresa'])){
 
     if($query_run){
         $_SESSION['message'] = "Empresa excluida com sucesso!";
-        header("Location: tabela_e.php");
+        header("Location: tabela_ep.php");
         exit(0);
     } else {
         $_SESSION['message'] = "Empresa NÃO foi excluida!";
-        header("Location: tabela_e.php");
+        header("Location: tabela_ep.php");
         exit(0);
     }
 }
@@ -54,11 +54,11 @@ if(isset($_POST['edita_u'])){
 
     if($query_run){
         $_SESSION['message'] = "Usuário atualizado com sucesso!";
-        header("Location: tabela_u.php");
+        header("Location: tabela_up.php");
         exit(0);
     } else {
         $_SESSION['message'] = "Usuário NÃO foi atualizado!";
-        header("Location: tabela_u.php");
+        header("Location: tabela_up.php");
         exit(0);
     }
 }
@@ -80,11 +80,11 @@ if(isset($_POST['edita_e'])){
 
     if($query_run){
         $_SESSION['message'] = "Empresa atualizada com sucesso!";
-        header("Location: tabela_e.php");
+        header("Location: tabela_ep.php");
         exit(0);
     } else {
         $_SESSION['message'] = "Empresa NÃO foi atualizada!";
-        header("Location: tabela_e.php");
+        header("Location: tabela_ep.php");
         exit(0);
     }
 }

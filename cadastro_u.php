@@ -15,7 +15,7 @@ require './conexao.php';
             <div class="card">
                 <div class="card-header">
                     <h4>Adicionar usuário
-                        <a href="./tabela_u.php" class="btn btn-danger float-end">Voltar</a>
+                        <a href="./tabela_up.php" class="btn btn-danger float-end">Voltar</a>
                     </h4>
                 </div>
                 <div class="card-body">

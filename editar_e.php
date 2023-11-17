@@ -15,7 +15,7 @@ require './conexao.php';
             <div class="card">
                 <div class="card-header">
                     <h4>Editar Empresa
-                        <a href="./tabela_e.php" class="btn btn-danger float-end">Voltar</a>
+                        <a href="./tabela_ep.php" class="btn btn-danger float-end">Voltar</a>
                     </h4>
                 </div>
                 <div class="card-body">
