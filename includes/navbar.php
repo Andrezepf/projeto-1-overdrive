@@ -34,6 +34,19 @@
         <li class="nav-item">
           <a class="nav-link" href="./tabela_ep.php">Tabela EP</a>
         </li>
+        <?php
+        if(!isset($_SESSION)){
+          session_start();
+        }
+        if(isset($_SESSION['nome'])){
+          ?>
+          <li class="nav-item">
+          <a class="nav-link" href="./logout.php">Logout</a>
+        </li>
+          <?php
+      }
+      ?>
+
       </ul>
       
     </div>
