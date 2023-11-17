@@ -4,6 +4,44 @@ include('./includes/navbar.php');
 include('./conexao.php');
 ?>
 
+<?php 
+
+if(isset($_POST['cpf']) || isset($_POST['senha'])){
+    if(strlen($_POST['cpf']) == 0){
+        echo "Preencha seu CPF";
+    } else if(strlen($_POST['senha']) == 0){
+        echo "Preencha sua senha";
+    } else {
+
+        $cpf = $mysqli->real_escape_string($_POST['cpf']);
+        $senha = $mysqli->real_escape_string($_POST['senha']);
+
+        $sql_code = "SELECT * FROM usuario WHERE cpf = '$cpf' AND senha = '$senha'";
+        $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
+
+        $quantidade = $sql_query->num_rows;
+
+        if($quantidade == 1){
+            
+            $usuario = $sql_query->fetch_assoc();
+
+            if(!isset($_SESSION)){
+                session_start();
+            }
+
+            $_SESSION['nome'] = $usuario['nome'];
+
+            header("Location: index.php");
+
+        } else {
+            echo "Falha ao logar! CPF ou senha incorretos!";
+        }
+
+    }
+}
+
+?>
+
 <div class="py-5">
     <div class="container">
         <div class="row justify-content-center">
@@ -14,17 +52,19 @@ include('./conexao.php');
                     </div>
                     <div class="card-body">
 
-                        <div class="form-group mb-3">
-                            <label>CPF</label>
-                            <input type="text" placeholder="Insira seu CPF (somente números)" class="form-control">
-                        </div>
-                        <div class="form-group mb-3">
-                            <label>Senha</label>
-                            <input type="password" placeholder="Insira sua Senha" class="form-control">
-                        </div>
-                        <div class="form-group mb-3">
-                            <button type="submit" class="btn btn-primary">Acessar</button>
-                        </div>
+                        <form action="" method="post">
+                            <div class="form-group mb-3">
+                                <label>CPF</label>
+                                <input type="text" name="cpf" placeholder="Insira seu CPF (somente números)" class="form-control">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label>Senha</label>
+                                <input type="password" name="senha" placeholder="Insira sua Senha" class="form-control">
+                            </div>
+                            <div class="form-group mb-3">
+                                <button type="submit" class="btn btn-primary">Acessar</button>
+                            </div>
+                        </form>
 
                     </div>
                 </div>
