@@ -53,10 +53,26 @@ class AlunoDAO{
 
 
     //atualizar_aluno
+    public function atualiza_aluno($aluno){
+        $update = $this->banco->prepare("UPDATE aluno SET nome = ?, idade = ? WHERE ra = ?");
+        $update_run = array($aluno->get_nome(), $aluno->get_idade(), $aluno->get_ra());
 
+        $update->execute($update_run);
+
+
+    }
 
     //deletar aluno
+    public function deleta_aluno($ra){
 
+        
+        $array = array($ra);
+
+        $deletar = $this->banco->prepare("DELETE FROM aluno WHERE ra = ?");
+
+        $deletar->execute($array);
+
+    }
 
 
 
