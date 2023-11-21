@@ -34,7 +34,7 @@ if(isset($_POST['cpf']) || isset($_POST['senha'])){
             header("Location: index.php");
 
         } else {
-            echo "Falha ao logar! CPF ou senha incorretos!";
+            $_SESSION['message'] = "Falha ao logar! CPF ou senha incorretos!";
         }
 
     }
