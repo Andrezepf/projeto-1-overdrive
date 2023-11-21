@@ -14,25 +14,10 @@
           <a class="nav-link" href="login.php">Login</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./cadastro_u.php">Cadastro U</a>
+          <a class="nav-link" href="./tabela_up.php">Usuários</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./cadastro_e.php">Cadastro E</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="pesquisa.php">Pesquisa</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./tabela_u.php">Tabela U</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./tabela_up.php">Tabela UP</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./tabela_e.php">Tabela E</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./tabela_ep.php">Tabela EP</a>
+          <a class="nav-link" href="./tabela_ep.php">Empresas</a>
         </li>
         <?php
         if(!isset($_SESSION)){

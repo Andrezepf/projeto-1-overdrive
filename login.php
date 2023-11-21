@@ -8,9 +8,9 @@ include('./conexao.php');
 
 if(isset($_POST['cpf']) || isset($_POST['senha'])){
     if(strlen($_POST['cpf']) == 0){
-        echo "Preencha seu CPF";
+        $_SESSION['message'] = "Preencha seu CPF.";
     } else if(strlen($_POST['senha']) == 0){
-        echo "Preencha sua senha";
+        $_SESSION['message'] = "Preencha sua senha.";
     } else {
 
         $cpf = $mysqli->real_escape_string($_POST['cpf']);
@@ -42,10 +42,11 @@ if(isset($_POST['cpf']) || isset($_POST['senha'])){
 
 ?>
 
-<div class="py-5">
-    <div class="container">
+<div class="py-5">    
+    <div class="container">   
         <div class="row justify-content-center">
             <div class="col-md-5">
+            <?php include('message.php'); ?>
                 <div class="card">
                     <div class="card-header">
                         <h4>Login</h4>

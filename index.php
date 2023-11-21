@@ -2,7 +2,7 @@
 include('./includes/header.php');
 include('./includes/navbar.php');
 require 'conexao.php';
-include('./protect.php');
+require 'protect.php';
 ?>
 
 <div class="py-5">

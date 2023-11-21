@@ -4,9 +4,8 @@ if(!isset($_SESSION)){
 }
 
 if(!isset($_SESSION['nome'])){
-    die("Você não pode acessar está página poque não está logado");
-    ?>
-    <a href="login.php"></a>
-    <?php
+    $_SESSION['message'] = "Você não está logado portanto não pode acessar a página solicitada, faça o login abaixo.";
+    header("Location: login.php");
+    exit(0);
 }
 ?>
