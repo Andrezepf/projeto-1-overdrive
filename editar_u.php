@@ -36,27 +36,27 @@ require 'protect.php';
 
                                 <div class="mb-3">
                                     <label>Nome</label>
-                                    <input type="text" name="nome" value="<?=$dados['nome']; ?>" class="form-control">
+                                    <input type="text" name="nome" value="<?=$dados['nome']; ?>" class="form-control" required minlength="5" maxlength="50">
                                 </div>
                                 <div class="mb-3">
                                     <label>CPF</label>
-                                    <input type="text" name="cpf" value="<?=$dados['cpf']; ?>" class="form-control">
+                                    <input type="text" name="cpf" value="<?=$dados['cpf']; ?>" class="form-control" required minlength="11" maxlength="11">
                                 </div>
                                 <div class="mb-3">
                                     <label>CNH</label>
-                                    <input type="text" name="cnh" value="<?=$dados['cnh']; ?>" class="form-control">
+                                    <input type="text" name="cnh" value="<?=$dados['cnh']; ?>" class="form-control" required minlength="5" maxlength="20">
                                 </div>
                                 <div class="mb-3">
                                     <label>Telefone</label>
-                                    <input type="text" name="telefone" value="<?=$dados['telefone']; ?>" class="form-control">
+                                    <input type="text" name="telefone" value="<?=$dados['telefone']; ?>" class="form-control" required minlength="10" maxlength="15">
                                 </div>
                                 <div class="mb-3">
                                     <label>Endereço</label>
-                                    <input type="text" name="endereco" value="<?=$dados['endereco']; ?>" class="form-control">
+                                    <input type="text" name="endereco" value="<?=$dados['endereco']; ?>" class="form-control" required minlength="5" maxlength="50">
                                 </div>
                                 <div class="mb-3">
                                     <label>Carro</label>
-                                    <input type="text" name="carro" value="<?=$dados['carro']; ?>" class="form-control">
+                                    <input type="text" name="carro" value="<?=$dados['carro']; ?>" class="form-control" required minlength="2" maxlength="20">
                                 </div>
                                 <div class="mb-3">
                                     <label>Empresa</label>

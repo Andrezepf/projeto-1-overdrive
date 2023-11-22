@@ -35,26 +35,26 @@ require 'protect.php';
                                 <div class="mb-3">
                                 <div class="mb-3">
                                     <label>CNPJ</label>
-                                    <input type="text" name="cnpj" value="<?=$dados['cnpj']; ?>" class="form-control">
+                                    <input type="text" name="cnpj" value="<?=$dados['cnpj']; ?>" class="form-control" required minlength="14" maxlength="14">
                                 </div>
                                     <label>Nome</label>
-                                    <input type="text" name="nome" value="<?=$dados['nome']; ?>" class="form-control">
+                                    <input type="text" name="nome" value="<?=$dados['nome']; ?>" class="form-control" required minlength="5" maxlength="50">
                                 </div>
                                 <div class="mb-3">
                                     <label>Nome Fantasia</label>
-                                    <input type="text" name="nome_fantasia" value="<?=$dados['nome_fantasia']; ?>" class="form-control">
+                                    <input type="text" name="nome_fantasia" value="<?=$dados['nome_fantasia']; ?>" class="form-control" required minlength="5" maxlength="50">
                                 </div>
                                 <div class="mb-3">
                                     <label>Endereço</label>
-                                    <input type="text" name="endereco" value="<?=$dados['endereco']; ?>" class="form-control">
+                                    <input type="text" name="endereco" value="<?=$dados['endereco']; ?>" class="form-control" required minlength="5" maxlength="50">
                                 </div>
                                 <div class="mb-3">
                                     <label>Telefone</label>
-                                    <input type="text" name="telefone" value="<?=$dados['telefone']; ?>" class="form-control">
+                                    <input type="text" name="telefone" value="<?=$dados['telefone']; ?>" class="form-control" required minlength="9" maxlength="15">
                                 </div>                                
                                 <div class="mb-3">
                                     <label>Responsavel</label>
-                                    <input type="text" name="responsavel" value="<?=$dados['responsavel']; ?>" class="form-control">
+                                    <input type="text" name="responsavel" value="<?=$dados['responsavel']; ?>" class="form-control" required minlength="5" maxlength="50">
                                 </div>
                                 
                                 <div class="mb-3">
