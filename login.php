@@ -30,6 +30,7 @@ if(isset($_POST['cpf']) || isset($_POST['senha'])){
             }
 
             $_SESSION['nome'] = $usuario['nome'];
+            $_SESSION['acesso'] = $usuario['acesso'];
 
             header("Location: index.php");
 

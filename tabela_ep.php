@@ -13,7 +13,13 @@ require 'protect.php';
             <div class="card">
                 <div class="card-header">
                     <h4>Lista de Empresas
+                    <?php
+                    if($_SESSION['acesso'] == 1){
+                    ?>
                     <a href="cadastro_e.php" class="btn btn-primary float-end">Adicionar Empresa</a>
+                    <?php
+                    }
+                    ?> 
                     </h4>
                 </div>
                 <div class="card-body">
@@ -33,7 +39,13 @@ require 'protect.php';
                                 <th>Endereço</th>
                                 <th>Telefone</th>
                                 <th>Responsável</th>
-                                <th>Ação</th>
+                                <?php
+                                if($_SESSION['acesso'] == 1){
+                                ?>
+                                    <th>Ação</th>
+                                <?php
+                                    }
+                                ?> 
                             </tr>
                         </thead>
                         
@@ -55,12 +67,18 @@ require 'protect.php';
                                         <td><?php echo $dados['endereco']; ?></td>
                                         <td><?php echo $dados['telefone']; ?></td>
                                         <td><?php echo $dados['responsavel']; ?></td>
+                                        <?php
+                                            if($_SESSION['acesso'] == 1){
+                                        ?>
                                         <td>
                                             <a href="editar_e.php?id=<?= $dados['e_id']; ?>" class="btn btn-success btn-sm">Editar</a>
                                             <form action="code.php" method="post" class="d-inline">
                                             <button type="submit" name="excluir_empresa" value="<?= $dados['e_id']; ?>" class="btn btn-danger btn-sm">Excluir</button>
                                             </form>
                                         </td>
+                                        <?php
+                                            }
+                                        ?>        
                                         </tr>
 
                                         <?php
@@ -92,12 +110,18 @@ require 'protect.php';
                                         <td><?php echo $dados['endereco']; ?></td>
                                         <td><?php echo $dados['telefone']; ?></td>
                                         <td><?php echo $dados['responsavel']; ?></td>
+                                        <?php
+                                            if($_SESSION['acesso'] == 1){
+                                        ?>
                                         <td>
                                             <a href="editar_e.php?id=<?= $dados['e_id']; ?>" class="btn btn-success btn-sm">Editar</a>
                                             <form action="code.php" method="post" class="d-inline">
                                             <button type="submit" name="excluir_empresa" value="<?= $dados['e_id']; ?>" class="btn btn-danger btn-sm">Excluir</button>
                                             </form>
                                         </td>
+                                        <?php
+                                            }
+                                        ?>
                                     </tr>
                                 <?php 
                                 }

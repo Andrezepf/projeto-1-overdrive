@@ -3,7 +3,7 @@ session_start();
 include('./includes/header.php');
 include('./includes/navbar.php');
 require './conexao.php';
-require 'protect.php';
+require 'protectadm.php';
 ?>
 
 
