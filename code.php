@@ -47,8 +47,9 @@ if(isset($_POST['edita_u'])){
     $endereco = mysqli_real_escape_string($mysqli, $_POST['endereco']);
     $carro = mysqli_real_escape_string($mysqli, $_POST['carro']);
     $empresa = mysqli_real_escape_string($mysqli, $_POST['empresa']);
+    $acesso = mysqli_real_escape_string($mysqli, $_POST['acesso']);
 
-    $query = "UPDATE usuario SET nome='$nome', cpf='$cpf', cnh='$cnh', telefone='$telefone', endereco='$endereco', carro='$carro', empresa='$empresa' WHERE u_id='$usuario_id'";
+    $query = "UPDATE usuario SET nome='$nome', cpf='$cpf', cnh='$cnh', telefone='$telefone', endereco='$endereco', carro='$carro', empresa='$empresa', acesso='$acesso' WHERE u_id='$usuario_id'";
 
     $query_run = mysqli_query($mysqli, $query);
 
@@ -100,8 +101,9 @@ if(isset($_POST['cadastra_u'])){
     $endereco = mysqli_real_escape_string($mysqli, $_POST['endereco']);
     $carro = mysqli_real_escape_string($mysqli, $_POST['carro']);
     $empresa = mysqli_real_escape_string($mysqli, $_POST['empresa']);
+    $acesso = mysqli_real_escape_string($mysqli, $_POST['acesso']);
 
-    $query = "INSERT INTO usuario (nome, cpf, cnh, telefone, endereco, carro, empresa) VALUES ('$nome', '$cpf', '$cnh', '$telefone', '$endereco', '$carro', '$empresa')";
+    $query = "INSERT INTO usuario (nome, cpf, cnh, telefone, endereco, carro, empresa, acesso) VALUES ('$nome', '$cpf', '$cnh', '$telefone', '$endereco', '$carro', '$empresa', '$acesso')";
 
     
     $query_run = mysqli_query($mysqli, $query);

@@ -49,6 +49,13 @@ require 'protectadm.php';
                             <input type="text" name="empresa" class="form-control">
                         </div>
                         <div class="mb-3">
+                            <label>Nível de Acesso</label> <br>
+                            <input type="radio" name="acesso" id="acesso0" value="0" checked>
+                            <label for="acesso0">Comum</label>
+                            <input type="radio" name="acesso" id="acesso1" value="1">
+                            <label for="acesso1">Administrador</label>
+                        </div>
+                        <div class="mb-3">
                             <button type="submit" name="cadastra_u" class="btn btn-primary">Cadastrar usuário</button>
                         </div>
                     </form>

@@ -63,6 +63,13 @@ require 'protectadm.php';
                                     <input type="text" name="empresa" value="<?=$dados['empresa']; ?>" class="form-control">
                                 </div>
                                 <div class="mb-3">
+                                    <label>Nível de Acesso</label> <br>
+                                    <input type="radio" name="acesso" id="acesso0" value="0" <?php if($dados['acesso'] == 0){ ?> checked <?php } ?>>
+                                    <label for="acesso0">Comum</label>
+                                    <input type="radio" name="acesso" id="acesso1" value="1" <?php if($dados['acesso'] == 1){ ?> checked <?php } ?>>
+                                    <label for="acesso1">Administrador</label>
+                                </div>
+                                <div class="mb-3">
                                     <button type="submit" name="edita_u" class="btn btn-primary">Salvar mudanças</button>
                                 </div>
                             </form>
