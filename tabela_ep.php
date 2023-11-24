@@ -25,7 +25,7 @@ require 'protect.php';
                 <div class="card-body">
 
                     <form action="" class="mb-3">
-                        <input name="busca" style="width: 30%;" value="<?php if(isset($_GET['busca'])) echo $_GET['busca']; ?>" placeholder="Nome, Nome Fantasia, CNPJ ou Responsável" type="text">
+                        <input name="busca" style="width: 30%;" value="<?php if(isset($_GET['busca'])) echo $_GET['busca']; ?>" placeholder="Nome, Nome Fantasia, CNPJ ou Responsável" type="text" autofocus>
                         <button type="submit" >Pesquisar</button>
                     </form>
 
@@ -70,10 +70,10 @@ require 'protect.php';
                                         <?php
                                             if($_SESSION['acesso'] == 1){
                                         ?>
-                                        <td>
-                                            <a href="editar_e.php?id=<?= $dados['e_id']; ?>" class="btn btn-success btn-sm">Editar</a>
+                                        <td style="text-align: center;">
+                                            <a href="editar_e.php?id=<?= $dados['e_id']; ?>" class="btn btn-success btn-sm col-lg-8 mb-1">Editar</a>
                                             <form action="code.php" method="post" class="d-inline">
-                                            <button type="submit" name="excluir_empresa" value="<?= $dados['e_id']; ?>" class="btn btn-danger btn-sm">Excluir</button>
+                                            <button type="submit" name="excluir_empresa" value="<?= $dados['e_id']; ?>" class="btn btn-danger btn-sm col-lg-8">Excluir</button>
                                             </form>
                                         </td>
                                         <?php
@@ -113,10 +113,10 @@ require 'protect.php';
                                         <?php
                                             if($_SESSION['acesso'] == 1){
                                         ?>
-                                        <td>
-                                            <a href="editar_e.php?id=<?= $dados['e_id']; ?>" class="btn btn-success btn-sm">Editar</a>
+                                        <td style="text-align: center;">
+                                            <a href="editar_e.php?id=<?= $dados['e_id']; ?>" class="btn btn-success btn-sm col-lg-8 mb-1">Editar</a>
                                             <form action="code.php" method="post" class="d-inline">
-                                            <button type="submit" name="excluir_empresa" value="<?= $dados['e_id']; ?>" class="btn btn-danger btn-sm">Excluir</button>
+                                            <button type="submit" name="excluir_empresa" value="<?= $dados['e_id']; ?>" class="btn btn-danger btn-sm col-lg-8">Excluir</button>
                                             </form>
                                         </td>
                                         <?php

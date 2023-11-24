@@ -4,6 +4,7 @@ require 'conexao.php';
 
 
 if(isset($_POST['excluir_usuario'])){
+    
     $usuario_id = mysqli_real_escape_string($mysqli, $_POST['excluir_usuario']);
 
     $query = "DELETE FROM usuario WHERE u_id='$usuario_id'";
@@ -23,17 +24,26 @@ if(isset($_POST['excluir_usuario'])){
 if(isset($_POST['excluir_empresa'])){
     $empresa_id = mysqli_real_escape_string($mysqli, $_POST['excluir_empresa']);
 
-    $query = "DELETE FROM empresa WHERE e_id='$empresa_id'";
+    $query = "SELECT * FROM usuario WHERE empresa='$empresa_id'"; 
+                                
     $query_run = mysqli_query($mysqli, $query);
 
-    if($query_run){
-        $_SESSION['message'] = "Empresa excluida com sucesso!";
+    if(mysqli_num_rows($query_run) > 0){
+        $_SESSION['message'] = "Empresa NÃO pode ser excluida pois possui funcionários vinculados!";
         header("Location: tabela_ep.php");
-        exit(0);
-    } else {
-        $_SESSION['message'] = "Empresa NÃO foi excluida!";
-        header("Location: tabela_ep.php");
-        exit(0);
+    }else{
+        $query = "DELETE FROM empresa WHERE e_id='$empresa_id'";
+        $query_run = mysqli_query($mysqli, $query);
+
+        if($query_run){
+            $_SESSION['message'] = "Empresa excluida com sucesso!";
+            header("Location: tabela_ep.php");
+            exit(0);
+        } else {
+            $_SESSION['message'] = "Empresa NÃO foi excluida!";
+            header("Location: tabela_ep.php");
+            exit(0);
+        }
     }
 }
 

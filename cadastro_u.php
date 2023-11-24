@@ -46,7 +46,19 @@ require 'protectadm.php';
                         </div>
                         <div class="mb-3">
                             <label>Empresa</label>
-                            <input type="text" name="empresa" class="form-control">
+                            <select name="empresa" id="empresa" class="form-control" required>
+                                <option value="">Selecione uma Empresa...</option>
+                            <?php
+                            $query = "SELECT * FROM empresa";
+                                $query_run = mysqli_query($mysqli, $query);
+
+                                if(mysqli_num_rows($query_run) > 0){
+                                    foreach($query_run as $dados){                                        
+                                        echo "<option value='{$dados['e_id']}'>{$dados['nome']}</option>";                                       
+                                    }
+                                }
+                                ?>
+                            </select>
                         </div>
                         <div class="mb-3">
                             <label>Nível de Acesso</label> <br>

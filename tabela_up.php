@@ -25,7 +25,7 @@ require 'protect.php';
                 <div class="card-body">
 
                     <form action="" class="mb-3">
-                        <input name="busca" style="width: 30%;" value="<?php if(isset($_GET['busca'])) echo $_GET['busca']; ?>" placeholder="Nome, CPF ou Empresa" type="text">
+                        <input name="busca" style="width: 30%;" value="<?php if(isset($_GET['busca'])) echo $_GET['busca']; ?>" placeholder="Nome ou CPF" type="text" autofocus>
                         <button type="submit" >Pesquisar</button>
                     </form>
 
@@ -53,8 +53,9 @@ require 'protect.php';
                         <tbody>
 
                             <?php
-                            if(!isset($_GET['busca'])){ 
-                                $query = "SELECT * FROM usuario";
+                            if(!isset($_GET['busca'])){
+                                $query = "SELECT u.u_id, u.nome, u.cpf, u.cnh, u.telefone, u.endereco, u.carro, e.nome as empresa from usuario as u join empresa as e on u.empresa = e.e_id ORDER BY u.u_id"; 
+                                
                                 $query_run = mysqli_query($mysqli, $query);
 
                                 if(mysqli_num_rows($query_run) > 0){
@@ -72,10 +73,10 @@ require 'protect.php';
                                         <?php
                                             if($_SESSION['acesso'] == 1){
                                         ?>
-                                        <td>
-                                            <a href="editar_u.php?id=<?= $dados['u_id']; ?>" class="btn btn-success btn-sm">Editar</a>
+                                        <td style="text-align: center;">
+                                            <a href="editar_u.php?id=<?= $dados['u_id']; ?>" class="btn btn-success btn-sm col-lg-8 mb-1">Editar</a>
                                             <form action="code.php" method="post" class="d-inline">
-                                            <button type="submit" name="excluir_usuario" value="<?= $dados['u_id']; ?>" class="btn btn-danger btn-sm">Excluir</button>
+                                            <button type="submit" name="excluir_usuario" value="<?= $dados['u_id']; ?>" class="btn btn-danger btn-sm col-lg-8">Excluir</button>
                                             </form>
                                         </td>
                                         <?php
@@ -92,7 +93,7 @@ require 'protect.php';
                                 }
                             } else{
                                 $pesquisa = $mysqli->real_escape_string($_GET['busca']);
-                                $query = "SELECT * FROM usuario WHERE cpf LIKE '%$pesquisa%' OR nome LIKE '%$pesquisa%' OR empresa LIKE '%$pesquisa%'";
+                                $query = "SELECT u.u_id, u.nome, u.cpf, u.cnh, u.telefone, u.endereco, u.carro, e.nome as empresa from usuario as u join empresa as e on u.empresa = e.e_id WHERE u.cpf LIKE '%$pesquisa%' OR u.nome LIKE '%$pesquisa%' ORDER BY u.u_id";
                                 $query_run = mysqli_query($mysqli, $query) or die("ERRO ao consultar! " . $mysqli->error);
 
                                 if($query_run->num_rows == 0){
@@ -116,10 +117,10 @@ require 'protect.php';
                                         <?php
                                             if($_SESSION['acesso'] == 1){
                                         ?>
-                                        <td>
-                                            <a href="editar_u.php?id=<?= $dados['u_id']; ?>" class="btn btn-success btn-sm">Editar</a>
+                                        <td style="text-align: center;">
+                                            <a href="editar_u.php?id=<?= $dados['u_id']; ?>" class="btn btn-success btn-sm col-lg-8 mb-1">Editar</a>
                                             <form action="code.php" method="post" class="d-inline">
-                                            <button type="submit" name="excluir_usuario" value="<?= $dados['u_id']; ?>" class="btn btn-danger btn-sm">Excluir</button>
+                                            <button type="submit" name="excluir_usuario" value="<?= $dados['u_id']; ?>" class="btn btn-danger btn-sm col-lg-8">Excluir</button>
                                             </form>
                                         </td>
                                         <?php

@@ -60,9 +60,21 @@ require 'protectadm.php';
                                 </div>
                                 <div class="mb-3">
                                     <label>Empresa</label>
-                                    <input type="text" name="empresa" value="<?=$dados['empresa']; ?>" class="form-control">
+                                    <select name="empresa" id="empresa" class="form-control" required>
+                                        
+                                    <?php
+                                        $query2 = "SELECT * FROM empresa";
+                                        $query_run2 = mysqli_query($mysqli, $query2);
+                                        echo "<option value='{$dados['empresa']}'>Manter mesma empresa</option>";
+                                        if(mysqli_num_rows($query_run2) > 0){
+                                            foreach($query_run2 as $dados2){                                        
+                                                echo "<option value='{$dados2['e_id']}'>{$dados2['nome']}</option>";                                       
+                                            }
+                                        }
+                                        ?>
+                                    </select>
                                 </div>
-                                <div class="mb-3">
+                                        <div class="mb-3">
                                     <label>Nível de Acesso</label> <br>
                                     <input type="radio" name="acesso" id="acesso0" value="0" <?php if($dados['acesso'] == 0){ ?> checked <?php } ?>>
                                     <label for="acesso0">Comum</label>
