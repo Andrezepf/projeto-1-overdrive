@@ -74,9 +74,9 @@ require 'protect.php';
                                             if($_SESSION['acesso'] == 1){
                                         ?>
                                         <td style="text-align: center;">
-                                            <a href="editar_u.php?id=<?= $dados['u_id']; ?>" class="btn btn-success btn-sm col-lg-8 mb-1">Editar</a>
+                                            <a href="editar_u.php?id=<?= $dados['u_id']; ?>" class="btn btn-success btn-sm col-lg-12 mb-1">Editar</a>
                                             <form action="code.php" method="post" class="d-inline">
-                                            <button type="submit" name="excluir_usuario" value="<?= $dados['u_id']; ?>" class="btn btn-danger btn-sm col-lg-8">Excluir</button>
+                                            <button type="submit" name="excluir_usuario" value="<?= $dados['u_id']; ?>" class="btn btn-danger btn-sm col-lg-12">Excluir</button>
                                             </form>
                                         </td>
                                         <?php
@@ -118,9 +118,9 @@ require 'protect.php';
                                             if($_SESSION['acesso'] == 1){
                                         ?>
                                         <td style="text-align: center;">
-                                            <a href="editar_u.php?id=<?= $dados['u_id']; ?>" class="btn btn-success btn-sm col-lg-8 mb-1">Editar</a>
+                                            <a href="editar_u.php?id=<?= $dados['u_id']; ?>" class="btn btn-success btn-sm col-lg-12 mb-1">Editar</a>
                                             <form action="code.php" method="post" class="d-inline">
-                                            <button type="submit" name="excluir_usuario" value="<?= $dados['u_id']; ?>" class="btn btn-danger btn-sm col-lg-8">Excluir</button>
+                                            <button type="submit" name="excluir_usuario" value="<?= $dados['u_id']; ?>" class="btn btn-danger btn-sm col-lg-12">Excluir</button>
                                             </form>
                                         </td>
                                         <?php
