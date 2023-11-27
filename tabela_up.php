@@ -75,7 +75,7 @@ require 'protect.php';
                                         ?>
                                         <td style="text-align: center;">
                                             <a href="editar_u.php?id=<?= $dados['u_id']; ?>" class="btn btn-success btn-sm col-lg-12 mb-1">Editar</a>
-                                            <form action="code.php" method="post" class="d-inline">
+                                            <form action="code.php" method="post" class="d-inline" onSubmit="return confirm('Você realmente quer excluir esse funcionário?');">
                                             <button type="submit" name="excluir_usuario" value="<?= $dados['u_id']; ?>" class="btn btn-danger btn-sm col-lg-12">Excluir</button>
                                             </form>
                                         </td>
@@ -119,7 +119,7 @@ require 'protect.php';
                                         ?>
                                         <td style="text-align: center;">
                                             <a href="editar_u.php?id=<?= $dados['u_id']; ?>" class="btn btn-success btn-sm col-lg-12 mb-1">Editar</a>
-                                            <form action="code.php" method="post" class="d-inline">
+                                            <form action="code.php" method="post" class="d-inline" onSubmit="return confirm('Você realmente quer excluir esse funcionário?');">
                                             <button type="submit" name="excluir_usuario" value="<?= $dados['u_id']; ?>" class="btn btn-danger btn-sm col-lg-12">Excluir</button>
                                             </form>
                                         </td>

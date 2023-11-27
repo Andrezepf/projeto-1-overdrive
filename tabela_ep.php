@@ -72,7 +72,7 @@ require 'protect.php';
                                         ?>
                                         <td style="text-align: center;">
                                             <a href="editar_e.php?id=<?= $dados['e_id']; ?>" class="btn btn-success btn-sm col-lg-12 mb-1">Editar</a>
-                                            <form action="code.php" method="post" class="d-inline">
+                                            <form action="code.php" method="post" class="d-inline" onSubmit="return confirm('Você realmente quer excluir essa empresa?');">
                                             <button type="submit" name="excluir_empresa" value="<?= $dados['e_id']; ?>" class="btn btn-danger btn-sm col-lg-12">Excluir</button>
                                             </form>
                                         </td>
@@ -115,7 +115,7 @@ require 'protect.php';
                                         ?>
                                         <td style="text-align: center;">
                                             <a href="editar_e.php?id=<?= $dados['e_id']; ?>" class="btn btn-success btn-sm col-lg-12 mb-1">Editar</a>
-                                            <form action="code.php" method="post" class="d-inline">
+                                            <form action="code.php" method="post" class="d-inline" onSubmit="return confirm('Você realmente quer excluir essa empresa?');">
                                             <button type="submit" name="excluir_empresa" value="<?= $dados['e_id']; ?>" class="btn btn-danger btn-sm col-lg-12">Excluir</button>
                                             </form>
                                         </td>
