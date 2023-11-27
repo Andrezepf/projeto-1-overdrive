@@ -56,7 +56,7 @@ if(isset($_POST['edita_u'])){
     $telefone = mysqli_real_escape_string($mysqli, $_POST['telefone']);
     $endereco = mysqli_real_escape_string($mysqli, $_POST['endereco']);
     $carro = mysqli_real_escape_string($mysqli, $_POST['carro']);
-    $senha = mysqli_real_escape_string($mysqli, $_POST['senha']);
+    $senha = mysqli_real_escape_string($mysqli, password_hash($_POST['senha'], PASSWORD_DEFAULT));
     $empresa = mysqli_real_escape_string($mysqli, $_POST['empresa']);
     $acesso = mysqli_real_escape_string($mysqli, $_POST['acesso']);
 
@@ -111,7 +111,7 @@ if(isset($_POST['cadastra_u'])){
     $telefone = mysqli_real_escape_string($mysqli, $_POST['telefone']);
     $endereco = mysqli_real_escape_string($mysqli, $_POST['endereco']);
     $carro = mysqli_real_escape_string($mysqli, $_POST['carro']);
-    $senha = mysqli_real_escape_string($mysqli, $_POST['senha']);
+    $senha = mysqli_real_escape_string($mysqli, password_hash($_POST['senha'], PASSWORD_DEFAULT));
     $empresa = mysqli_real_escape_string($mysqli, $_POST['empresa']);
     $acesso = mysqli_real_escape_string($mysqli, $_POST['acesso']);
 

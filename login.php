@@ -16,7 +16,7 @@ if(isset($_POST['cpf']) || isset($_POST['senha'])){
         $cpf = $mysqli->real_escape_string($_POST['cpf']);
         $senha = $mysqli->real_escape_string($_POST['senha']);
 
-        $sql_code = "SELECT * FROM usuario WHERE cpf = '$cpf' AND senha = '$senha'";
+        $sql_code = "SELECT * FROM usuario WHERE cpf = '$cpf'";
         $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
 
         $quantidade = $sql_query->num_rows;
@@ -28,12 +28,14 @@ if(isset($_POST['cpf']) || isset($_POST['senha'])){
             if(!isset($_SESSION)){
                 session_start();
             }
+            if(password_verify($senha, $usuario['senha'])){
+                $_SESSION['nome'] = $usuario['nome'];
+                $_SESSION['acesso'] = $usuario['acesso'];
 
-            $_SESSION['nome'] = $usuario['nome'];
-            $_SESSION['acesso'] = $usuario['acesso'];
-
-            header("Location: index.php");
-
+                header("Location: index.php");
+            } else {
+                $_SESSION['message'] = "Falha ao logar! CPF ou senha incorretos!";
+            }
         } else {
             $_SESSION['message'] = "Falha ao logar! CPF ou senha incorretos!";
         }
