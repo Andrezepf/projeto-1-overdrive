@@ -45,6 +45,10 @@ require 'protectadm.php';
                             <input type="text" name="carro" class="form-control" required minlength="2" maxlength="20" placeholder="Insira o modelo do Carro">
                         </div>
                         <div class="mb-3">
+                            <label>Senha</label>
+                            <input type="password" name="senha" class="form-control" required minlength="4" maxlength="20" placeholder="Insira a senha">
+                        </div>
+                        <div class="mb-3">
                             <label>Empresa</label>
                             <select name="empresa" id="empresa" class="form-control" required>
                                 <option value="">Selecione uma Empresa...</option>

@@ -59,6 +59,10 @@ require 'protectadm.php';
                                     <input type="text" name="carro" value="<?=$dados['carro']; ?>" class="form-control" required minlength="2" maxlength="20">
                                 </div>
                                 <div class="mb-3">
+                                    <label>Senha</label>
+                                    <input type="password" name="senha" value="<?=$dados['senha']; ?>" class="form-control" required minlength="4" maxlength="20">
+                                </div>
+                                <div class="mb-3">
                                     <label>Empresa</label>
                                     <select name="empresa" id="empresa" class="form-control" required>
                                         
