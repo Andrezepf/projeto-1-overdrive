@@ -22,7 +22,7 @@ require 'protectadm.php';
 
                         <div class="mb-3">
                             <label>Nome</label>
-                            <input type="text" name="nome" class="form-control" required minlength="5" maxlength="50" placeholder="Insira Nome">
+                            <input type="text" name="nome" class="form-control" required minlength="5" maxlength="255" placeholder="Insira Nome">
                         </div>
                         <div class="mb-3">
                             <label>CPF</label>
@@ -38,15 +38,15 @@ require 'protectadm.php';
                         </div>
                         <div class="mb-3">
                             <label>Endereço</label>
-                            <input type="text" name="endereco" class="form-control" required minlength="5" maxlength="50" placeholder="Insira Endereço">
+                            <input type="text" name="endereco" class="form-control" required minlength="5" maxlength="255" placeholder="Insira Endereço">
                         </div>
                         <div class="mb-3">
                             <label>Carro</label>
-                            <input type="text" name="carro" class="form-control" required minlength="2" maxlength="20" placeholder="Insira o modelo do Carro">
+                            <input type="text" name="carro" class="form-control" required minlength="2" maxlength="255" placeholder="Insira o modelo do Carro">
                         </div>
                         <div class="mb-3">
                             <label>Senha</label>
-                            <input type="password" name="senha" class="form-control" required minlength="4" maxlength="20" placeholder="Insira a senha">
+                            <input type="password" name="senha" class="form-control" required minlength="4" maxlength="30" placeholder="Insira a senha">
                         </div>
                         <div class="mb-3">
                             <label>Empresa</label>

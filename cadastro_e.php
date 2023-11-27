@@ -26,15 +26,15 @@ require 'protectadm.php';
                         </div>
                         <div class="mb-3">
                             <label>Nome</label>
-                            <input type="text" name="nome" class="form-control" required minlength="5" maxlength="50" placeholder="Insira o Nome da Empresa">
+                            <input type="text" name="nome" class="form-control" required minlength="5" maxlength="255" placeholder="Insira o Nome da Empresa">
                         </div>
                         <div class="mb-3">
                             <label>Nome Fantasia</label>
-                            <input type="text" name="nome_fantasia" class="form-control" required minlength="5" maxlength="50" placeholder="Insira o Nome Fantasia da Empresa">
+                            <input type="text" name="nome_fantasia" class="form-control" required minlength="5" maxlength="255" placeholder="Insira o Nome Fantasia da Empresa">
                         </div>
                         <div class="mb-3">
                             <label>Endereço</label>
-                            <input type="text" name="endereco" class="form-control" required minlength="5" maxlength="50" placeholder="Insira o Endereço da Empresa">
+                            <input type="text" name="endereco" class="form-control" required minlength="5" maxlength="255" placeholder="Insira o Endereço da Empresa">
                         </div>
                         <div class="mb-3">
                             <label>Telefone</label>
@@ -42,7 +42,7 @@ require 'protectadm.php';
                         </div>
                         <div class="mb-3">
                             <label>Responsável</label>
-                            <input type="text" name="responsavel" class="form-control" required minlength="5" maxlength="50" placeholder="Insira o Responsável da Empresa">
+                            <input type="text" name="responsavel" class="form-control" required minlength="5" maxlength="255" placeholder="Insira o Responsável da Empresa">
                         </div>
                         <div class="mb-3">
                             <button type="submit" name="cadastra_e" class="btn btn-primary">Cadastrar empresa</button>

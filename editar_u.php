@@ -36,7 +36,7 @@ require 'protectadm.php';
 
                                 <div class="mb-3">
                                     <label>Nome</label>
-                                    <input type="text" name="nome" value="<?=$dados['nome']; ?>" class="form-control" required minlength="5" maxlength="50">
+                                    <input type="text" name="nome" value="<?=$dados['nome']; ?>" class="form-control" required minlength="5" maxlength="255">
                                 </div>
                                 <div class="mb-3">
                                     <label>CPF</label>
@@ -52,15 +52,15 @@ require 'protectadm.php';
                                 </div>
                                 <div class="mb-3">
                                     <label>Endereço</label>
-                                    <input type="text" name="endereco" value="<?=$dados['endereco']; ?>" class="form-control" required minlength="5" maxlength="50">
+                                    <input type="text" name="endereco" value="<?=$dados['endereco']; ?>" class="form-control" required minlength="5" maxlength="255">
                                 </div>
                                 <div class="mb-3">
                                     <label>Carro</label>
-                                    <input type="text" name="carro" value="<?=$dados['carro']; ?>" class="form-control" required minlength="2" maxlength="20">
+                                    <input type="text" name="carro" value="<?=$dados['carro']; ?>" class="form-control" required minlength="2" maxlength="255">
                                 </div>
                                 <div class="mb-3">
                                     <label>Senha</label>
-                                    <input type="password" name="senha" value="<?=$dados['senha']; ?>" class="form-control" required minlength="4" maxlength="20">
+                                    <input type="password" name="senha" value="<?=$dados['senha']; ?>" class="form-control" required minlength="4" maxlength="30">
                                 </div>
                                 <div class="mb-3">
                                     <label>Empresa</label>
