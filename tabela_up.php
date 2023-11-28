@@ -54,7 +54,7 @@ require 'protect.php';
 
                                 <?php
                                 if(!isset($_GET['busca'])){
-                                    $query = "SELECT u.u_id, u.nome, u.cpf, u.cnh, u.telefone, u.endereco, u.carro, e.nome as empresa from usuario as u join empresa as e on u.empresa = e.e_id ORDER BY u.u_id"; 
+                                    $query = "SELECT u.u_id, u.nome, u.cpf, u.cnh, u.telefone, u.endereco, u.carro, e.nome_fantasia as empresa from usuario as u join empresa as e on u.empresa = e.e_id ORDER BY u.u_id"; 
                                     
                                     $query_run = mysqli_query($mysqli, $query);
 
@@ -93,7 +93,7 @@ require 'protect.php';
                                     }
                                 } else{
                                     $pesquisa = $mysqli->real_escape_string($_GET['busca']);
-                                    $query = "SELECT u.u_id, u.nome, u.cpf, u.cnh, u.telefone, u.endereco, u.carro, e.nome as empresa from usuario as u join empresa as e on u.empresa = e.e_id WHERE u.cpf LIKE '%$pesquisa%' OR u.nome LIKE '%$pesquisa%' ORDER BY u.u_id";
+                                    $query = "SELECT u.u_id, u.nome, u.cpf, u.cnh, u.telefone, u.endereco, u.carro, e.nome_fantasia as empresa from usuario as u join empresa as e on u.empresa = e.e_id WHERE u.cpf LIKE '%$pesquisa%' OR u.nome LIKE '%$pesquisa%' ORDER BY u.u_id";
                                     $query_run = mysqli_query($mysqli, $query) or die("ERRO ao consultar! " . $mysqli->error);
 
                                     if($query_run->num_rows == 0){

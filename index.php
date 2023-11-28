@@ -11,6 +11,7 @@ require 'protect.php';
             <div class="col-md-5">
                 <?php include('message.php'); ?>       
                 <h1>Bem vindo, <?php echo $_SESSION['nome'];?></h1>
+                <a href="editar_sl.php" class="btn btn-danger float-end">Alterar senha</a>
             </div>                    
         </div>
     </div>

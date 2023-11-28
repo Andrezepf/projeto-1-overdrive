@@ -10,7 +10,7 @@ if(!isset($_SESSION['nome'])){
 }
 
 if($_SESSION['acesso'] == 0){
-    $_SESSION['message'] = "Você não tem permissão para acessar a página solicitada.";
+    $_SESSION['message'] = "Você não tem permissão para acessar a página solicitada, faça login como administrador para acessá-la.";
     header("Location: index.php");
     exit(0);
 } 

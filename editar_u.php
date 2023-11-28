@@ -17,6 +17,7 @@ require 'protectadm.php';
                 <div class="card-header">
                     <h4>Editar usuário
                         <a href="./tabela_up.php" class="btn btn-danger float-end">Voltar</a>
+                        
                     </h4>
                 </div>
                 <div class="card-body">
@@ -44,7 +45,7 @@ require 'protectadm.php';
                                 </div>
                                 <div class="mb-3">
                                     <label>CNH</label>
-                                    <input type="text" name="cnh" value="<?=$dados['cnh']; ?>" class="form-control" required minlength="5" maxlength="20">
+                                    <input type="text" name="cnh" value="<?=$dados['cnh']; ?>" class="form-control" required minlength="10" maxlength="11">
                                 </div>
                                 <div class="mb-3">
                                     <label>Telefone</label>
@@ -57,11 +58,7 @@ require 'protectadm.php';
                                 <div class="mb-3">
                                     <label>Carro</label>
                                     <input type="text" name="carro" value="<?=$dados['carro']; ?>" class="form-control" required minlength="2" maxlength="255">
-                                </div>
-                                <div class="mb-3">
-                                    <label>Senha</label>
-                                    <input type="password" name="senha" value="<?=$dados['senha']; ?>" class="form-control" required minlength="4" maxlength="30">
-                                </div>
+                                </div>                            
                                 <div class="mb-3">
                                     <label>Empresa</label>
                                     <select name="empresa" id="empresa" class="form-control" required>
@@ -72,7 +69,7 @@ require 'protectadm.php';
                                         echo "<option value='{$dados['empresa']}'>Manter mesma empresa</option>";
                                         if(mysqli_num_rows($query_run2) > 0){
                                             foreach($query_run2 as $dados2){                                        
-                                                echo "<option value='{$dados2['e_id']}'>{$dados2['nome']}</option>";                                       
+                                                echo "<option value='{$dados2['e_id']}'>{$dados2['nome_fantasia']}</option>";                                       
                                             }
                                         }
                                         ?>
@@ -87,6 +84,7 @@ require 'protectadm.php';
                                 </div>
                                 <div class="mb-3">
                                     <button type="submit" name="edita_u" class="btn btn-primary">Salvar mudanças</button>
+                                    <a href="editar_s.php?id=<?= $dados['u_id']; ?>" class="btn btn-danger float-end">Alterar senha</a>
                                 </div>
                             </form>
                             

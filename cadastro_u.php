@@ -30,7 +30,7 @@ require 'protectadm.php';
                         </div>
                         <div class="mb-3">
                             <label>CNH</label>
-                            <input type="text" name="cnh" class="form-control" required maxlength="20" placeholder="Insira o número da CNH">
+                            <input type="text" name="cnh" class="form-control" required minlength="10" maxlength="11" placeholder="Insira o número da CNH">
                         </div>
                         <div class="mb-3">
                             <label>Telefone</label>
@@ -58,7 +58,7 @@ require 'protectadm.php';
 
                                 if(mysqli_num_rows($query_run) > 0){
                                     foreach($query_run as $dados){                                        
-                                        echo "<option value='{$dados['e_id']}'>{$dados['nome']}</option>";                                       
+                                        echo "<option value='{$dados['e_id']}'>{$dados['nome_fantasia']}</option>";                                       
                                     }
                                 }
                                 ?>

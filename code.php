@@ -61,11 +61,10 @@ if(isset($_POST['edita_u'])){
     $telefone = mysqli_real_escape_string($mysqli, $_POST['telefone']);
     $endereco = mysqli_real_escape_string($mysqli, $_POST['endereco']);
     $carro = mysqli_real_escape_string($mysqli, $_POST['carro']);
-    $senha = mysqli_real_escape_string($mysqli, password_hash($_POST['senha'], PASSWORD_DEFAULT));
     $empresa = mysqli_real_escape_string($mysqli, $_POST['empresa']);
     $acesso = mysqli_real_escape_string($mysqli, $_POST['acesso']);
 
-    $query = "UPDATE usuario SET nome='$nome', cpf='$cpf', cnh='$cnh', telefone='$telefone', endereco='$endereco', carro='$carro', senha='$senha', empresa='$empresa', acesso='$acesso' WHERE u_id='$usuario_id'";
+    $query = "UPDATE usuario SET nome='$nome', cpf='$cpf', cnh='$cnh', telefone='$telefone', endereco='$endereco', carro='$carro', empresa='$empresa', acesso='$acesso' WHERE u_id='$usuario_id'";
 
     $query_run = mysqli_query($mysqli, $query);
 
@@ -162,6 +161,69 @@ if(isset($_POST['cadastra_e'])){
     
 }
 
+if(isset($_POST['edita_s'])){
+    $usuario_id = mysqli_real_escape_string($mysqli, $_POST['usuario_id']);
+    $nova_senha = mysqli_real_escape_string($mysqli, $_POST['nova_senha']);
+    $confirma_senha = mysqli_real_escape_string($mysqli, $_POST['confirma_senha']);
+    if($nova_senha == $confirma_senha){
+        $senha = mysqli_real_escape_string($mysqli, password_hash($_POST['nova_senha'], PASSWORD_DEFAULT));
+        $query = "UPDATE usuario SET senha='$senha' WHERE u_id='$usuario_id'";
+
+        $query_run = mysqli_query($mysqli, $query);
+
+        if($query_run){
+            $_SESSION['message'] = "Senha atualizada com sucesso!";
+            header("Location: editar_u.php?id={$usuario_id}");
+            exit(0);
+        } else {
+            $_SESSION['message'] = "A senha NÃO foi atualizada!";
+            header("Location: editar_u.php?id={$usuario_id}");
+            exit(0);
+        }  
+    } else {
+        $_SESSION['message'] = "As senhas não são iguais";
+        header("Location: editar_s.php?id={$usuario_id}");
+        exit(0);
+    }    
+    
+    
+
+    
+}
+
+if(isset($_POST['edita_sl'])){
+    $usuario_id = mysqli_real_escape_string($mysqli, $_POST['usuario_id']);
+    $nova_senha = mysqli_real_escape_string($mysqli, $_POST['nova_senha']);
+    $confirma_senha = mysqli_real_escape_string($mysqli, $_POST['confirma_senha']);
+    if($usuario_id == $_SESSION['u_id']){
+        if($nova_senha == $confirma_senha){
+            $senha = mysqli_real_escape_string($mysqli, password_hash($_POST['nova_senha'], PASSWORD_DEFAULT));
+            $query = "UPDATE usuario SET senha='$senha' WHERE u_id='$usuario_id'";
+    
+            $query_run = mysqli_query($mysqli, $query);
+    
+            if($query_run){
+                $_SESSION['message'] = "Senha atualizada com sucesso!";
+                header("Location: index.php");
+                exit(0);
+            } else {
+                $_SESSION['message'] = "A senha NÃO foi atualizada!";
+                header("Location: editar_sl.php");
+                exit(0);
+            }  
+        } else {
+            $_SESSION['message'] = "As senhas não são iguais";
+            header("Location: editar_sl.php");
+            exit(0);
+        }    
+    } else {
+        $_SESSION['message'] = "Impossível atualizar, incompatibilidade de ID";
+        header("Location: index.php");
+        exit(0);
+    }
+    
+    
+}
 
 
 
