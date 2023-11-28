@@ -15,7 +15,7 @@ require 'conexao.php';
                     <?php
                         if(!isset($_SESSION['acesso'])){        
                     ?>
-                            <h1>Bem vindo!</h1>
+                            <h1>Bem vindo(a)!</h1>
                             <p>Esta é uma aplicação desenvolvida por André Melo Zepf durante o programa de estágio da Overdrive + Sol Agora e busca exemplificar os conhecimentos adquiridos durante essa primeira etapa. Espero que goste ;)</p>
                     <?php
                         } else {
