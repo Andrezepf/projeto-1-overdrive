@@ -14,6 +14,9 @@
         if(!isset($_SESSION['nome'])){
           ?>
           <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="index.php">Home</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="login.php">Login</a>
           </li>
         <?php
