@@ -54,7 +54,7 @@ require 'protect.php';
 
                                 <?php
                                 if(!isset($_GET['busca'])){ 
-                                    $query = "SELECT * FROM empresa";
+                                    $query = "SELECT * FROM empresa ORDER BY e_id";
                                     $query_run = mysqli_query($mysqli, $query);
 
                                     if(mysqli_num_rows($query_run) > 0){
@@ -91,7 +91,7 @@ require 'protect.php';
                                     }
                                 } else{
                                     $pesquisa = $mysqli->real_escape_string($_GET['busca']);
-                                    $query = "SELECT * FROM empresa WHERE nome LIKE '%$pesquisa%' OR nome_fantasia LIKE '%$pesquisa%' OR cnpj LIKE '%$pesquisa%' OR responsavel LIKE '%$pesquisa%'";
+                                    $query = "SELECT * FROM empresa WHERE nome LIKE '%$pesquisa%' OR nome_fantasia LIKE '%$pesquisa%' OR cnpj LIKE '%$pesquisa%' OR responsavel LIKE '%$pesquisa%' ORDER BY e_id";
                                     $query_run = mysqli_query($mysqli, $query) or die("ERRO ao consultar! " . $mysqli->error);
 
                                     if($query_run->num_rows == 0){
