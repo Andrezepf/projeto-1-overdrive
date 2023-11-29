@@ -9,9 +9,9 @@ require 'protect.php';
 <div class="container mt-5">
     <?php include('message.php'); ?>
     <div class="row">   
-        <div class="col-md-12">            
+        <div class="col-md-12 mb-5">            
             <div class="card">
-                <div class="table-responsive">    
+                <div class="table-responsive">
                     <div class="card-header">
                         <h4>Lista de Funcionários
                         <?php
@@ -76,7 +76,7 @@ require 'protect.php';
                                             <td style="text-align: center;">
                                                 <a href="editar_u.php?id=<?= $dados['u_id']; ?>" class="btn btn-success btn-sm col-lg-12 mb-1">Editar</a>
                                                 <form action="code.php" method="post" class="d-inline" onSubmit="return confirm('Você realmente quer excluir esse funcionário?');">
-                                                <button type="submit" name="excluir_usuario" value="<?= $dados['u_id']; ?>" class="btn btn-danger btn-sm col-lg-12">Excluir</button>
+                                                    <button type="submit" name="excluir_usuario" value="<?= $dados['u_id']; ?>" class="btn btn-danger btn-sm col-lg-12">Excluir</button>
                                                 </form>
                                             </td>
                                             <?php

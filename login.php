@@ -70,7 +70,9 @@ if(isset($_POST['cpf']) || isset($_POST['senha'])){
                                 <button type="submit" class="btn btn-primary">Acessar</button>
                             </div>
                         </form>
-
+                        <p class="mb-0 mt-0">*Logins para teste:</p>
+                        <p class="mb-0 mt-0">Admin - CPF: 22222222222 / Senha: 1234</p>                        
+                        <p class="mb-0 mt-0">Comum - CPF: 33333333333 / SENHA: 123456</p>                        
                     </div>
                 </div>
             </div>

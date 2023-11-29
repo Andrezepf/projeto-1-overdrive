@@ -1,3 +1,15 @@
-tr td{
-    white-space: pre-wrap;
+nav{
+    box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.329);
+}
+
+body {
+    background: url(./images/cidade3.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+  }
+
+.card{
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.514);
 }
