@@ -8,12 +8,12 @@ require 'protect.php';
 
 <div class="container mt-5">
     <?php include('message.php'); ?>
-    <div class="row">   
+    <div class="row justify-content-center">   
         <div class="col-md-12 mb-5">            
             <div class="card">
                 <div class="table-responsive">
                     <div class="card-header">
-                        <h4>Lista de Funcionários
+                        <h4>Funcionários
                         <?php
                             if($_SESSION['acesso'] == 1){
                         ?>

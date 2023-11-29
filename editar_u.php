@@ -8,11 +8,9 @@ require 'protectadm.php';
 
 
 <div class="container mt-5">
-
-    <?php include('./message.php'); ?>
-
-    <div class="row">
-        <div class="col-md-12">
+    <div class="row justify-content-center">
+        <div class="col-md-7 mb-5">
+        <?php include('./message.php'); ?>
             <div class="card">
                 <div class="card-header">
                     <h4>Editar usuário

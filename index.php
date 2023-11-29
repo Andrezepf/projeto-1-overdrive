@@ -38,7 +38,7 @@ require 'conexao.php';
                                     <li>Editar, Excluir e Atualizar Empresas</li>
                                     
                                     <?php } ?>
-                                    <p><a href="editar_sl.php" class="btn btn-danger float-end">Alterar sua senha</a></p>   
+                                    <p><a href="editar_sl.php" class="btn btn-danger float-end mt-2">Alterar sua senha</a></p>   
                         <?php } ?>
                                     
                         </ul>

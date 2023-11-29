@@ -27,7 +27,7 @@
             <a class="nav-link" aria-current="page" href="index.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./tabela_up.php">Usuários</a>
+            <a class="nav-link" href="./tabela_up.php">Funcionários</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="./tabela_ep.php">Empresas</a>
