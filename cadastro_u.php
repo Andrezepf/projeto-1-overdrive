@@ -50,7 +50,7 @@ require 'protectadm.php';
                         </div>
                         <div class="mb-3">
                             <label>Empresa</label>
-                            <select name="empresa" id="empresa" class="form-control" required>
+                            <select name="empresa" id="empresa" class="form-select" required>
                                 <option value="">Selecione uma Empresa...</option>
                             <?php
                             $query = "SELECT * FROM empresa";
@@ -72,7 +72,7 @@ require 'protectadm.php';
                             <label for="acesso1">Administrador</label>
                         </div>
                         <div class="mb-3">
-                            <button type="submit" name="cadastra_u" class="btn btn-primary">Cadastrar usuário</button>
+                            <button type="submit" name="cadastra_u" class="btn btn-dark">Cadastrar usuário</button>
                         </div>
                     </form>
                 </div>

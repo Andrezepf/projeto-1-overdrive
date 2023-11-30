@@ -181,7 +181,7 @@ if(isset($_POST['edita_s'])){
             exit(0);
         }  
     } else {
-        $_SESSION['message'] = "As senhas não são iguais";
+        $_SESSION['message'] = "As senhas não são iguais!";
         header("Location: editar_s.php?id={$usuario_id}");
         exit(0);
     }    
@@ -212,7 +212,7 @@ if(isset($_POST['edita_sl'])){
                 exit(0);
             }  
         } else {
-            $_SESSION['message'] = "As senhas não são iguais";
+            $_SESSION['message'] = "As senhas não são iguais!";
             header("Location: editar_sl.php");
             exit(0);
         }    

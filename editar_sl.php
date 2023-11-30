@@ -42,7 +42,7 @@ require 'protect.php';
                                     <input type="password" name="confirma_senha" placeholder="Digite novamente a nova senha" class="form-control" required minlength="4" maxlength="30">
                                
                                 <div class="mb-3">
-                                    <button type="submit" name="edita_sl" class="btn btn-primary mt-2">Alterar senha</button>
+                                    <button type="submit" name="edita_sl" class="btn btn-dark mt-3">Alterar senha</button>
                                     
                                 </div>
                             </form>

@@ -17,7 +17,7 @@ require 'protect.php';
                         <?php
                             if($_SESSION['acesso'] == 1){
                         ?>
-                        <a href="cadastro_u.php" class="btn btn-primary float-end">Adicionar Funcionário</a>
+                        <a href="cadastro_u.php" class="btn btn-dark float-end">Adicionar Funcionário</a>
                         <?php
                             }
                         ?>
@@ -29,11 +29,11 @@ require 'protect.php';
                             <input name="busca" style="width: 30%;" value="<?php if(isset($_GET['busca'])) echo $_GET['busca']; ?>" placeholder="Nome ou CPF" type="text" autofocus>
                             <button type="submit" >Pesquisar</button>
                         </form>
-                        <table class="table table-bordered table-striped">                           
-                            <thead>
+                        <table class="table table-bordered table-hover">                           
+                            <thead class="table-dark">
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Nome</th>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Nome</th>
                                     <th>CPF</th>
                                     <th>CNH</th>
                                     <th>Telefone</th>
@@ -74,7 +74,7 @@ require 'protect.php';
                                                 if($_SESSION['acesso'] == 1){
                                             ?>
                                             <td style="text-align: center;">
-                                                <a href="editar_u.php?id=<?= $dados['u_id']; ?>" class="btn btn-success btn-sm col-lg-12 mb-1">Editar</a>
+                                                <a href="editar_u.php?id=<?= $dados['u_id']; ?>" class="btn btn-dark btn-sm col-lg-12 mb-1">Editar</a>
                                                 <form action="code.php" method="post" class="d-inline" onSubmit="return confirm('Você realmente quer excluir esse funcionário?');">
                                                     <button type="submit" name="excluir_usuario" value="<?= $dados['u_id']; ?>" class="btn btn-danger btn-sm col-lg-12">Excluir</button>
                                                 </form>
@@ -118,7 +118,7 @@ require 'protect.php';
                                                 if($_SESSION['acesso'] == 1){
                                             ?>
                                             <td style="text-align: center;">
-                                                <a href="editar_u.php?id=<?= $dados['u_id']; ?>" class="btn btn-success btn-sm col-lg-12 mb-1">Editar</a>
+                                                <a href="editar_u.php?id=<?= $dados['u_id']; ?>" class="btn btn-dark btn-sm col-lg-12 mb-1">Editar</a>
                                                 <form action="code.php" method="post" class="d-inline" onSubmit="return confirm('Você realmente quer excluir esse funcionário?');">
                                                 <button type="submit" name="excluir_usuario" value="<?= $dados['u_id']; ?>" class="btn btn-danger btn-sm col-lg-12">Excluir</button>
                                                 </form>

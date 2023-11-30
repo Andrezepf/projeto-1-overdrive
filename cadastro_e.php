@@ -45,7 +45,7 @@ require 'protectadm.php';
                             <input type="text" name="responsavel" class="form-control" required minlength="5" maxlength="255" placeholder="Insira o Responsável da Empresa">
                         </div>
                         <div class="mb-3">
-                            <button type="submit" name="cadastra_e" class="btn btn-primary">Cadastrar empresa</button>
+                            <button type="submit" name="cadastra_e" class="btn btn-dark">Cadastrar empresa</button>
                         </div>
                     </form>
                 </div>

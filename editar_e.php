@@ -58,7 +58,7 @@ require 'protectadm.php';
                                 </div>
                                 
                                 <div class="mb-3">
-                                    <button type="submit" name="edita_e" class="btn btn-primary">Salvar mudanças</button>
+                                    <button type="submit" name="edita_e" class="btn btn-dark">Salvar mudanças</button>
                                 </div>
                             </form>
                             

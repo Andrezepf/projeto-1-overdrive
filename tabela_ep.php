@@ -17,7 +17,7 @@ require 'protect.php';
                         <?php
                         if($_SESSION['acesso'] == 1){
                         ?>
-                        <a href="cadastro_e.php" class="btn btn-primary float-end">Adicionar Empresa</a>
+                        <a href="cadastro_e.php" class="btn btn-dark float-end">Adicionar Empresa</a>
                         <?php
                         }
                         ?> 
@@ -30,8 +30,8 @@ require 'protect.php';
                             <button type="submit" >Pesquisar</button>
                         </form>
 
-                        <table class="table table-bordered table-striped">
-                            <thead>
+                        <table class="table table-bordered table-hover">
+                            <thead class="table-dark">
                                 <tr>
                                 <th>ID</th>
                                     <th>CNPJ</th>
@@ -72,7 +72,7 @@ require 'protect.php';
                                                 if($_SESSION['acesso'] == 1){
                                             ?>
                                             <td style="text-align: center;">
-                                                <a href="editar_e.php?id=<?= $dados['e_id']; ?>" class="btn btn-success btn-sm col-lg-12 mb-1">Editar</a>
+                                                <a href="editar_e.php?id=<?= $dados['e_id']; ?>" class="btn btn-dark btn-sm col-lg-12 mb-1">Editar</a>
                                                 <form action="code.php" method="post" class="d-inline" onSubmit="return confirm('Você realmente quer excluir essa empresa?');">
                                                 <button type="submit" name="excluir_empresa" value="<?= $dados['e_id']; ?>" class="btn btn-danger btn-sm col-lg-12">Excluir</button>
                                                 </form>
@@ -115,7 +115,7 @@ require 'protect.php';
                                                 if($_SESSION['acesso'] == 1){
                                             ?>
                                             <td style="text-align: center;">
-                                                <a href="editar_e.php?id=<?= $dados['e_id']; ?>" class="btn btn-success btn-sm col-lg-12 mb-1">Editar</a>
+                                                <a href="editar_e.php?id=<?= $dados['e_id']; ?>" class="btn btn-dark btn-sm col-lg-12 mb-1">Editar</a>
                                                 <form action="code.php" method="post" class="d-inline" onSubmit="return confirm('Você realmente quer excluir essa empresa?');">
                                                 <button type="submit" name="excluir_empresa" value="<?= $dados['e_id']; ?>" class="btn btn-danger btn-sm col-lg-12">Excluir</button>
                                                 </form>

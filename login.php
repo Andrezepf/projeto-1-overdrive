@@ -67,12 +67,12 @@ if(isset($_POST['cpf']) || isset($_POST['senha'])){
                                 <input type="password" name="senha" placeholder="Insira sua Senha" class="form-control">
                             </div>
                             <div class="form-group mb-3">
-                                <button type="submit" class="btn btn-primary">Acessar</button>
+                                <button type="submit" class="btn btn-dark">Acessar</button>
                             </div>
                         </form>
                         <p class="mb-0 mt-0">*Logins para teste:</p>
                         <p class="mb-0 mt-0">Admin - CPF: 22222222222 / Senha: 1234</p>                        
-                        <p class="mb-0 mt-0">Comum - CPF: 33333333333 / SENHA: 123456</p>                        
+                        <p class="mb-0 mt-0">Comum - CPF: 33333333333 / Senha: 123456</p>                        
                     </div>
                 </div>
             </div>

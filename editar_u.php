@@ -59,7 +59,7 @@ require 'protectadm.php';
                                 </div>                            
                                 <div class="mb-3">
                                     <label>Empresa</label>
-                                    <select name="empresa" id="empresa" class="form-control" required>
+                                    <select name="empresa" id="empresa" class="form-select" required>
                                         
                                     <?php
                                         $query2 = "SELECT * FROM empresa";
@@ -81,7 +81,7 @@ require 'protectadm.php';
                                     <label for="acesso1">Administrador</label>
                                 </div>
                                 <div class="mb-3">
-                                    <button type="submit" name="edita_u" class="btn btn-primary">Salvar mudanças</button>
+                                    <button type="submit" name="edita_u" class="btn btn-dark">Salvar mudanças</button>
                                     <a href="editar_s.php?id=<?= $dados['u_id']; ?>" class="btn btn-danger float-end">Alterar senha</a>
                                 </div>
                             </form>
