@@ -1,21 +1,21 @@
 <?php
 session_start();
-include('./includes/header.php');
-include('./includes/navbar.php');
-require './conexao.php';
-require 'protect.php';
+include('../includes/header.php');
+include('../includes/navbar.php');
+require '../controller/conexao.php';
+require '../controller/protectadm.php';
 ?>
 
 
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-5">
-        <?php include('./message.php'); ?>
+        <?php include('../controller/message.php'); ?>
             <div class="card">
                 <div class="card-header">
                 <?php
-                    if(isset($_SESSION['u_id'])){
-                        $usuario_id = mysqli_real_escape_string($mysqli, $_SESSION['u_id']);
+                    if(isset($_GET['id'])){
+                        $usuario_id = mysqli_real_escape_string($mysqli, $_GET['id']);
                         $query = "SELECT * FROM usuario WHERE u_id='$usuario_id'";
                         $query_run = mysqli_query($mysqli, $query);
 
@@ -23,14 +23,14 @@ require 'protect.php';
                             $dados = mysqli_fetch_array($query_run);
                             ?>
                     <h4>Alterar senha
-                    <a href="index.php" class="btn btn-danger float-end">Voltar</a>        
+                    <a href="editar_u.php?id=<?= $usuario_id; ?>" class="btn btn-danger float-end">Voltar</a>        
                     </h4>
                 </div>
                 <div class="card-body">
 
                     
                             
-                            <form action="./code.php" method="post">
+                            <form action="../controller/code.php" method="post">
                                 <input type="hidden" name="usuario_id" value="<?= $dados['u_id']; ?>">
 
                                 <div class="mb-3">
@@ -42,7 +42,7 @@ require 'protect.php';
                                     <input type="password" name="confirma_senha" placeholder="Digite novamente a nova senha" class="form-control" required minlength="4" maxlength="30">
                                
                                 <div class="mb-3">
-                                    <button type="submit" name="edita_sl" class="btn btn-dark mt-3">Alterar senha</button>
+                                    <button type="submit" name="edita_s" class="btn btn-dark mt-3">Alterar senha</button>
                                     
                                 </div>
                             </form>
@@ -71,5 +71,5 @@ require 'protect.php';
 
 
 <?php
-include('./includes/footer.php');
+include('../includes/footer.php');
 ?>

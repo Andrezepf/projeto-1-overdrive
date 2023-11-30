@@ -1,16 +1,16 @@
 <?php
 session_start();
-include('./includes/header.php');
-include('./includes/navbar.php');
-require './conexao.php';
-require 'protectadm.php';
+include('../includes/header.php');
+include('../includes/navbar.php');
+require '../controller/conexao.php';
+require '../controller/protectadm.php';
 ?>
 
 
 <div class="container mt-5">   
     <div class="row justify-content-center">
         <div class="col-md-7 mb-5">
-        <?php include('./message.php'); ?>
+        <?php include('../controller/message.php'); ?>
             <div class="card">
                 <div class="card-header">
                     <h4>Editar Empresa
@@ -29,7 +29,7 @@ require 'protectadm.php';
                             $dados = mysqli_fetch_array($query_run);
                             ?>
                             
-                            <form action="./code.php" method="post">
+                            <form action="../controller/code.php" method="post">
                                 <input type="hidden" name="empresa_id" value="<?= $dados['e_id']; ?>">
 
                                 <div class="mb-3">
@@ -86,5 +86,5 @@ require 'protectadm.php';
 
 
 <?php
-include('./includes/footer.php');
+include('../includes/footer.php');
 ?>

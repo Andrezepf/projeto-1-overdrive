@@ -1,16 +1,16 @@
 <?php
 session_start();
-include('./includes/header.php');
-include('./includes/navbar.php');
-require './conexao.php';
-require 'protectadm.php';
+include('../includes/header.php');
+include('../includes/navbar.php');
+require '../controller/conexao.php';
+require '../controller/protectadm.php';
 ?>
 
 
 <div class="container mt-5">   
     <div class="row justify-content-center">
         <div class="col-md-7 mb-5">
-        <?php include('./message.php'); ?>
+        <?php include('../controller/message.php'); ?>
             <div class="card">
                 <div class="card-header">
                     <h4>Adicionar empresa
@@ -18,7 +18,7 @@ require 'protectadm.php';
                     </h4>
                 </div>
                 <div class="card-body">
-                    <form action="./code.php" method="post">
+                    <form action="../controller/code.php" method="post">
 
                         <div class="mb-3">
                             <label>CNPJ</label>
@@ -66,5 +66,5 @@ require 'protectadm.php';
 
 
 <?php
-include('./includes/footer.php');
+include('../includes/footer.php');
 ?>
