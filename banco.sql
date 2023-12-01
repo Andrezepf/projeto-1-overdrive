@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `overdrive`
 --
+CREATE DATABASE IF NOT EXISTS `overdrive` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `overdrive`;
 
 -- --------------------------------------------------------
 
@@ -27,7 +29,6 @@ SET time_zone = "+00:00";
 -- Table structure for table `empresa`
 --
 
-DROP TABLE IF EXISTS `empresa`;
 CREATE TABLE IF NOT EXISTS `empresa` (
   `e_id` int NOT NULL AUTO_INCREMENT,
   `cnpj` varchar(14) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
@@ -55,7 +56,6 @@ INSERT INTO `empresa` (`e_id`, `cnpj`, `nome`, `nome_fantasia`, `endereco`, `tel
 -- Table structure for table `usuario`
 --
 
-DROP TABLE IF EXISTS `usuario`;
 CREATE TABLE IF NOT EXISTS `usuario` (
   `u_id` int NOT NULL AUTO_INCREMENT,
   `nome` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
