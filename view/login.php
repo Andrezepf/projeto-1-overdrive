@@ -8,9 +8,9 @@ include('../controller/conexao.php');
 
 if(isset($_POST['cpf']) || isset($_POST['senha'])){
     if(strlen($_POST['cpf']) == 0){
-        $_SESSION['message'] = "Preencha seu CPF.";
+        $_SESSION['messageerror'] = "Preencha seu CPF.";
     } else if(strlen($_POST['senha']) == 0){
-        $_SESSION['message'] = "Preencha sua senha.";
+        $_SESSION['messageerror'] = "Preencha sua senha.";
     } else {
 
         $cpf = $mysqli->real_escape_string($_POST['cpf']);
@@ -35,10 +35,10 @@ if(isset($_POST['cpf']) || isset($_POST['senha'])){
 
                 header("Location: ../index.php");
             } else {
-                $_SESSION['message'] = "Falha ao logar! CPF ou senha incorretos!";
+                $_SESSION['messageerror'] = "Falha ao logar! CPF ou senha incorretos!";
             }
         } else {
-            $_SESSION['message'] = "Falha ao logar! CPF ou senha incorretos!";
+            $_SESSION['messageerror'] = "Falha ao logar! CPF ou senha incorretos!";
         }
 
     }
@@ -51,6 +51,7 @@ if(isset($_POST['cpf']) || isset($_POST['senha'])){
         <div class="row justify-content-center">
             <div class="col-md-5">
             <?php include('../controller/message.php'); ?>
+            <?php include('../controller/messageerror.php'); ?>
                 <div class="card">
                     <div class="card-header">
                         <h4>Login</h4>

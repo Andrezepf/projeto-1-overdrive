@@ -9,7 +9,7 @@ if(isset($_POST['excluir_usuario'])){
 
     
     if($usuario_id == $_SESSION['u_id']){
-        $_SESSION['message'] = "Você não pode excluir a si mesmo!";
+        $_SESSION['messageerror'] = "Você não pode excluir a si mesmo!";
         header("Location: ../view/tabela_up.php");
     } else {
         $query = "DELETE FROM usuario WHERE u_id='$usuario_id'";
@@ -19,7 +19,7 @@ if(isset($_POST['excluir_usuario'])){
             header("Location: ../view/tabela_up.php");
             exit(0);
         } else {
-            $_SESSION['message'] = "Usuário NÃO foi excluido!";
+            $_SESSION['messageerror'] = "Usuário NÃO foi excluido!";
             header("Location: ../view/tabela_up.php");
             exit(0);
         }
@@ -34,7 +34,7 @@ if(isset($_POST['excluir_empresa'])){
     $query_run = mysqli_query($mysqli, $query);
 
     if(mysqli_num_rows($query_run) > 0){
-        $_SESSION['message'] = "Empresa NÃO pode ser excluida pois possui funcionários vinculados!";
+        $_SESSION['messageerror'] = "Empresa NÃO pode ser excluida pois possui funcionários vinculados!";
         header("Location: ../view/tabela_ep.php");
     }else{
         $query = "DELETE FROM empresa WHERE e_id='$empresa_id'";
@@ -45,7 +45,7 @@ if(isset($_POST['excluir_empresa'])){
             header("Location: ../view/tabela_ep.php");
             exit(0);
         } else {
-            $_SESSION['message'] = "Empresa NÃO foi excluida!";
+            $_SESSION['messageerror'] = "Empresa NÃO foi excluida!";
             header("Location: ../view/tabela_ep.php");
             exit(0);
         }
@@ -73,7 +73,7 @@ if(isset($_POST['edita_u'])){
         header("Location: ../view/tabela_up.php");
         exit(0);
     } else {
-        $_SESSION['message'] = "Usuário NÃO foi atualizado!";
+        $_SESSION['messageerror'] = "Usuário NÃO foi atualizado!";
         header("Location: ../view/tabela_up.php");
         exit(0);
     }
@@ -99,7 +99,7 @@ if(isset($_POST['edita_e'])){
         header("Location: ../view/tabela_ep.php");
         exit(0);
     } else {
-        $_SESSION['message'] = "Empresa NÃO foi atualizada!";
+        $_SESSION['messageerror'] = "Empresa NÃO foi atualizada!";
         header("Location: ../view/tabela_ep.php");
         exit(0);
     }
@@ -128,7 +128,7 @@ if(isset($_POST['cadastra_u'])){
         header("Location: ../view/cadastro_u.php");
         exit(0);
     } else {
-        $_SESSION['message'] = "Usuário NÃO foi cadastrado!";
+        $_SESSION['messageerror'] = "Usuário NÃO foi cadastrado!";
         header("Location: ../view/cadastro_u.php");
         exit(0);
     }
@@ -154,7 +154,7 @@ if(isset($_POST['cadastra_e'])){
         header("Location: ../view/cadastro_e.php");
         exit(0);
     } else {
-        $_SESSION['message'] = "Empresa NÃO foi cadastrada!";
+        $_SESSION['messageerror'] = "Empresa NÃO foi cadastrada!";
         header("Location: ../view/cadastro_e.php");
         exit(0);
     }
@@ -176,12 +176,12 @@ if(isset($_POST['edita_s'])){
             header("Location: ../view/editar_u.php?id={$usuario_id}");
             exit(0);
         } else {
-            $_SESSION['message'] = "A senha NÃO foi atualizada!";
+            $_SESSION['messageerror'] = "A senha NÃO foi atualizada!";
             header("Location: ../view/editar_u.php?id={$usuario_id}");
             exit(0);
         }  
     } else {
-        $_SESSION['message'] = "As senhas não são iguais!";
+        $_SESSION['messageerror'] = "As senhas não são iguais!";
         header("Location: ../view/editar_s.php?id={$usuario_id}");
         exit(0);
     }    
@@ -207,17 +207,17 @@ if(isset($_POST['edita_sl'])){
                 header("Location: ../index.php");
                 exit(0);
             } else {
-                $_SESSION['message'] = "A senha NÃO foi atualizada!";
+                $_SESSION['messageerror'] = "A senha NÃO foi atualizada!";
                 header("Location: ../view/editar_sl.php");
                 exit(0);
             }  
         } else {
-            $_SESSION['message'] = "As senhas não são iguais!";
+            $_SESSION['messageerror'] = "As senhas não são iguais!";
             header("Location: ../view/editar_sl.php");
             exit(0);
         }    
     } else {
-        $_SESSION['message'] = "Impossível atualizar, incompatibilidade de ID";
+        $_SESSION['messageerror'] = "Impossível atualizar, incompatibilidade de ID";
         header("Location: ../index.php");
         exit(0);
     }

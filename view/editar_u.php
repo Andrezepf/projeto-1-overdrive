@@ -11,6 +11,7 @@ require '../controller/protectadm.php';
     <div class="row justify-content-center">
         <div class="col-md-7 mb-5">
         <?php include('../controller/message.php'); ?>
+        <?php include('../controller/messageerror.php'); ?>
             <div class="card">
                 <div class="card-header">
                     <h4>Editar usuário

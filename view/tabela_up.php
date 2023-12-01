@@ -8,6 +8,7 @@ require '../controller/protect.php';
 
 <div class="container mt-5">
     <?php include('../controller/message.php'); ?>
+    <?php include('../controller/messageerror.php'); ?>
     <div class="row justify-content-center">   
         <div class="col-md-12 mb-5">            
             <div class="card">
