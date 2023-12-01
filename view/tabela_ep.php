@@ -1,13 +1,14 @@
 <?php
 session_start();
-include('./includes/header.php');
-include('./includes/navbar.php');
-require 'conexao.php';
-require 'protect.php';
+include('../includes/header.php');
+include('../includes/navbar.php');
+require '../controller/conexao.php';
+require '../controller/protect.php';
 ?>
 
 <div class="container mt-5">
-    <?php include('message.php'); ?>
+    <?php include('../controller/message.php'); ?>
+    <?php include('../controller/messageerror.php'); ?>
     <div class="row justify-content-center">
         <div class="col-md-12 mb-5">
             <div class="card">
@@ -73,7 +74,7 @@ require 'protect.php';
                                             ?>
                                             <td style="text-align: center;">
                                                 <a href="editar_e.php?id=<?= $dados['e_id']; ?>" class="btn btn-dark btn-sm col-lg-12 mb-1">Editar</a>
-                                                <form action="code.php" method="post" class="d-inline" onSubmit="return confirm('Você realmente quer excluir essa empresa?');">
+                                                <form action="../controller/code.php" method="post" class="d-inline" onSubmit="return confirm('Você realmente quer excluir essa empresa?');">
                                                 <button type="submit" name="excluir_empresa" value="<?= $dados['e_id']; ?>" class="btn btn-danger btn-sm col-lg-12">Excluir</button>
                                                 </form>
                                             </td>
@@ -116,7 +117,7 @@ require 'protect.php';
                                             ?>
                                             <td style="text-align: center;">
                                                 <a href="editar_e.php?id=<?= $dados['e_id']; ?>" class="btn btn-dark btn-sm col-lg-12 mb-1">Editar</a>
-                                                <form action="code.php" method="post" class="d-inline" onSubmit="return confirm('Você realmente quer excluir essa empresa?');">
+                                                <form action="../controller/code.php" method="post" class="d-inline" onSubmit="return confirm('Você realmente quer excluir essa empresa?');">
                                                 <button type="submit" name="excluir_empresa" value="<?= $dados['e_id']; ?>" class="btn btn-danger btn-sm col-lg-12">Excluir</button>
                                                 </form>
                                             </td>
@@ -143,5 +144,5 @@ require 'protect.php';
 
 
 <?php
-include('./includes/footer.php');
+include('../includes/footer.php');
 ?>

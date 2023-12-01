@@ -1,16 +1,16 @@
 <?php
-include('./includes/header.php');
-include('./includes/navbar.php');
-include('./conexao.php');
+include('../includes/header.php');
+include('../includes/navbar.php');
+include('../controller/conexao.php');
 ?>
 
 <?php 
 
 if(isset($_POST['cpf']) || isset($_POST['senha'])){
     if(strlen($_POST['cpf']) == 0){
-        $_SESSION['message'] = "Preencha seu CPF.";
+        $_SESSION['messageerror'] = "Preencha seu CPF.";
     } else if(strlen($_POST['senha']) == 0){
-        $_SESSION['message'] = "Preencha sua senha.";
+        $_SESSION['messageerror'] = "Preencha sua senha.";
     } else {
 
         $cpf = $mysqli->real_escape_string($_POST['cpf']);
@@ -33,12 +33,12 @@ if(isset($_POST['cpf']) || isset($_POST['senha'])){
                 $_SESSION['u_id'] = $usuario['u_id'];
                 $_SESSION['acesso'] = $usuario['acesso'];
 
-                header("Location: index.php");
+                header("Location: ../index.php");
             } else {
-                $_SESSION['message'] = "Falha ao logar! CPF ou senha incorretos!";
+                $_SESSION['messageerror'] = "Falha ao logar! CPF ou senha incorretos!";
             }
         } else {
-            $_SESSION['message'] = "Falha ao logar! CPF ou senha incorretos!";
+            $_SESSION['messageerror'] = "Falha ao logar! CPF ou senha incorretos!";
         }
 
     }
@@ -50,7 +50,8 @@ if(isset($_POST['cpf']) || isset($_POST['senha'])){
     <div class="container">   
         <div class="row justify-content-center">
             <div class="col-md-5">
-            <?php include('message.php'); ?>
+            <?php include('../controller/message.php'); ?>
+            <?php include('../controller/messageerror.php'); ?>
                 <div class="card">
                     <div class="card-header">
                         <h4>Login</h4>
@@ -81,5 +82,5 @@ if(isset($_POST['cpf']) || isset($_POST['senha'])){
 </div>
 
 <?php
-include('./includes/footer.php');
+include('../includes/footer.php');
 ?>
