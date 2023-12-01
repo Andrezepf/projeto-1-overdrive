@@ -64,6 +64,7 @@ require 'controller/conexao.php';
         <div class="row justify-content-center">
             <div class="col-md-5">
                 <?php include('./controller/message.php'); ?>
+                <?php include('./controller/messageerror.php'); ?>
                 <div class="card">
                     <div class="card-header">
                     <?php
