@@ -211,26 +211,52 @@ if(isset($_POST['edita_s'])){
     $usuario_id = mysqli_real_escape_string($mysqli, $_POST['usuario_id']);
     $nova_senha = mysqli_real_escape_string($mysqli, $_POST['nova_senha']);
     $confirma_senha = mysqli_real_escape_string($mysqli, $_POST['confirma_senha']);
+
+    $codeDAO = new codeDAO; 
+    $busca = $codeDAO->infoUsuario($usuario_id);
+    $nome = $busca['nome'];
+    $cpf = $busca['cpf'];
+    $cnh = $busca['cnh'];
+    $telefone = $busca['telefone'];
+    $endereco = $busca['endereco'];
+    $carro = $busca['carro'];
+    $empresa = $busca['empresa'];
+    $acesso = $busca['acesso'];
+
+    
+
     if($nova_senha == $confirma_senha){
         $senha = mysqli_real_escape_string($mysqli, password_hash($_POST['nova_senha'], PASSWORD_DEFAULT));
-        $query = "UPDATE usuario SET senha='$senha' WHERE u_id='$usuario_id'";
+        $usuario = new Usuario($nome,$cpf,$cnh,$telefone,$endereco,$carro,$empresa,$senha,$acesso);
 
-        $query_run = mysqli_query($mysqli, $query);
-
-        if($query_run){
-            $_SESSION['message'] = "Senha atualizada com sucesso!";
-            header("Location: ../view/editar_u.php?id={$usuario_id}");
-            exit(0);
-        } else {
+        try {
+    
+            if($codeDAO->editaSenha($usuario,$usuario_id)){
+                $_SESSION['message'] = "Senha atualizada com sucesso!";
+                header("Location: ../view/editar_u.php?id={$usuario_id}");
+                exit(0);
+            }else{
+                $_SESSION['messageerror'] = "A senha NÃO foi atualizada!";
+                header("Location: ../view/editar_u.php?id={$usuario_id}");
+                exit(0);
+            }
+        
+        } 
+        
+        catch(PDOException $e){
             $_SESSION['messageerror'] = "A senha NÃO foi atualizada!";
-            header("Location: ../view/editar_u.php?id={$usuario_id}");
+            //$_SESSION['messageerror'] = "Erro: " . $e->getMessage();
+            header("Location: ../view/tabela_ep.php");
             exit(0);
-        }  
+        }
+  
     } else {
         $_SESSION['messageerror'] = "As senhas não são iguais!";
         header("Location: ../view/editar_s.php?id={$usuario_id}");
         exit(0);
-    }    
+    } 
+    
+    
     
     
 
@@ -241,27 +267,50 @@ if(isset($_POST['edita_sl'])){
     $usuario_id = mysqli_real_escape_string($mysqli, $_POST['usuario_id']);
     $nova_senha = mysqli_real_escape_string($mysqli, $_POST['nova_senha']);
     $confirma_senha = mysqli_real_escape_string($mysqli, $_POST['confirma_senha']);
+
+    $codeDAO = new codeDAO; 
+    $busca = $codeDAO->infoUsuario($usuario_id);
+    $nome = $busca['nome'];
+    $cpf = $busca['cpf'];
+    $cnh = $busca['cnh'];
+    $telefone = $busca['telefone'];
+    $endereco = $busca['endereco'];
+    $carro = $busca['carro'];
+    $empresa = $busca['empresa'];
+    $acesso = $busca['acesso'];
+
     if($usuario_id == $_SESSION['u_id']){
+                
         if($nova_senha == $confirma_senha){
             $senha = mysqli_real_escape_string($mysqli, password_hash($_POST['nova_senha'], PASSWORD_DEFAULT));
-            $query = "UPDATE usuario SET senha='$senha' WHERE u_id='$usuario_id'";
+            $usuario = new Usuario($nome,$cpf,$cnh,$telefone,$endereco,$carro,$empresa,$senha,$acesso);
     
-            $query_run = mysqli_query($mysqli, $query);
-    
-            if($query_run){
-                $_SESSION['message'] = "Senha atualizada com sucesso!";
-                header("Location: ../index.php");
-                exit(0);
-            } else {
+            try {
+        
+                if($codeDAO->editaSenha($usuario,$usuario_id)){
+                    $_SESSION['message'] = "Senha atualizada com sucesso!";
+                    header("Location: ../index.php");
+                    exit(0);
+                }else{
+                    $_SESSION['messageerror'] = "A senha NÃO foi atualizada!";
+                    header("Location: ../view/editar_sl.php");
+                    exit(0);
+                }
+            
+            } 
+            
+            catch(PDOException $e){
                 $_SESSION['messageerror'] = "A senha NÃO foi atualizada!";
+                //$_SESSION['messageerror'] = "Erro: " . $e->getMessage();
                 header("Location: ../view/editar_sl.php");
                 exit(0);
-            }  
+            }
+      
         } else {
             $_SESSION['messageerror'] = "As senhas não são iguais!";
             header("Location: ../view/editar_sl.php");
             exit(0);
-        }    
+        }
     } else {
         $_SESSION['messageerror'] = "Impossível atualizar, incompatibilidade de ID";
         header("Location: ../index.php");

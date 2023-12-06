@@ -116,6 +116,27 @@ class codeDAO{
     }
 
 
+    public function editaSenha($usuario,$usuario_id)
+    {
+        $query = "UPDATE usuario SET senha = ? WHERE u_id = ?";
+        
+        $query_run = $this->banco->prepare($query);
+    
+
+        $dados=array(            
+            $usuario->getSenha(),
+            $usuario_id
+        );
+
+        if($query_run->execute($dados)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
+
     public function infoUsuario($usuario_id)
     {
         $query = "SELECT * FROM usuario WHERE u_id = :id";
