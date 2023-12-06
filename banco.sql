@@ -37,7 +37,8 @@ CREATE TABLE IF NOT EXISTS `empresa` (
   `endereco` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `telefone` varchar(15) DEFAULT NULL,
   `responsavel` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  PRIMARY KEY (`e_id`)
+  PRIMARY KEY (`e_id`),
+  UNIQUE KEY `cnpj` (`cnpj`)
 ) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --

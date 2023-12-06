@@ -1,6 +1,9 @@
 <?php
 session_start();
 require 'conexao.php';
+require('../model/codeDAO.php');
+require('../model/usuario.php');
+require('../model/empresa.php');
 
 
 if(isset($_POST['excluir_usuario'])){
@@ -64,16 +67,30 @@ if(isset($_POST['edita_u'])){
     $empresa = mysqli_real_escape_string($mysqli, $_POST['empresa']);
     $acesso = mysqli_real_escape_string($mysqli, $_POST['acesso']);
 
-    $query = "UPDATE usuario SET nome='$nome', cpf='$cpf', cnh='$cnh', telefone='$telefone', endereco='$endereco', carro='$carro', empresa='$empresa', acesso='$acesso' WHERE u_id='$usuario_id'";
+    $codeDAO = new codeDAO; 
+    $busca = $codeDAO->infoUsuario($usuario_id);
+    $senha = $busca['senha'];
 
-    $query_run = mysqli_query($mysqli, $query);
+    $usuario = new Usuario($nome,$cpf,$cnh,$telefone,$endereco,$carro,$empresa,$senha,$acesso);
 
-    if($query_run){
-        $_SESSION['message'] = "Usuário atualizado com sucesso!";
-        header("Location: ../view/tabela_up.php");
-        exit(0);
-    } else {
+
+    try{
+    
+        if($codeDAO->editaUsuario($usuario,$usuario_id)){
+            $_SESSION['message'] = "Usuário atualizado com sucesso!";
+            header("Location: ../view/tabela_up.php");
+            exit(0);
+        }else{
+            $_SESSION['messageerror'] = "Usuário NÃO foi atualizado!";
+            header("Location: ../view/tabela_up.php");
+            exit(0);
+        }
+    
+    }
+    
+    catch(PDOException $e){
         $_SESSION['messageerror'] = "Usuário NÃO foi atualizado!";
+        //$_SESSION['messageerror'] = "Erro: " . $e->getMessage();
         header("Location: ../view/tabela_up.php");
         exit(0);
     }
@@ -90,16 +107,27 @@ if(isset($_POST['edita_e'])){
     $telefone = mysqli_real_escape_string($mysqli, $_POST['telefone']);
     $responsavel = mysqli_real_escape_string($mysqli, $_POST['responsavel']);
 
-    $query = "UPDATE empresa SET cnpj='$cnpj', nome='$nome', nome_fantasia='$nome_fantasia', endereco='$endereco', telefone='$telefone', responsavel='$responsavel' WHERE e_id='$empresa_id'";
+    $codeDAO = new codeDAO;
+    $empresa = new Empresa($cnpj,$nome,$nome_fantasia,$endereco,$telefone,$responsavel);
 
-    $query_run = mysqli_query($mysqli, $query);
 
-    if($query_run){
-        $_SESSION['message'] = "Empresa atualizada com sucesso!";
-        header("Location: ../view/tabela_ep.php");
-        exit(0);
-    } else {
+    try {
+    
+        if($codeDAO->editaEmpresa($empresa,$empresa_id)){
+            $_SESSION['message'] = "Empresa atualizada com sucesso!";
+            header("Location: ../view/tabela_ep.php");
+            exit(0);
+        }else{
+            $_SESSION['messageerror'] = "Empresa NÃO foi atualizada!";
+            header("Location: ../view/tabela_ep.php");
+            exit(0);
+        }
+    
+    } 
+    
+    catch(PDOException $e){
         $_SESSION['messageerror'] = "Empresa NÃO foi atualizada!";
+        //$_SESSION['messageerror'] = "Erro: " . $e->getMessage();
         header("Location: ../view/tabela_ep.php");
         exit(0);
     }
@@ -115,22 +143,31 @@ if(isset($_POST['cadastra_u'])){
     $telefone = mysqli_real_escape_string($mysqli, $_POST['telefone']);
     $endereco = mysqli_real_escape_string($mysqli, $_POST['endereco']);
     $carro = mysqli_real_escape_string($mysqli, $_POST['carro']);
-    $senha = mysqli_real_escape_string($mysqli, password_hash($_POST['senha'], PASSWORD_DEFAULT));
     $empresa = mysqli_real_escape_string($mysqli, $_POST['empresa']);
+    $senha = mysqli_real_escape_string($mysqli, password_hash($_POST['senha'], PASSWORD_DEFAULT));
     $acesso = mysqli_real_escape_string($mysqli, $_POST['acesso']);
 
-    $query = "INSERT INTO usuario (nome, cpf, cnh, telefone, endereco, carro, senha, empresa, acesso) VALUES ('$nome', '$cpf', '$cnh', '$telefone', '$endereco', '$carro', '$senha', '$empresa', '$acesso')";
+    $codeDAO = new codeDAO;
+    $usuario = new Usuario($nome,$cpf,$cnh,$telefone,$endereco,$carro,$empresa,$senha,$acesso);
 
     
-    $query_run = mysqli_query($mysqli, $query);
-    if($query_run){
-        $_SESSION['message'] = "Usuário cadastrado com sucesso!";
-        header("Location: ../view/cadastro_u.php");
-        exit(0);
-    } else {
+    try{
+        if($codeDAO->cadastraUsuario($usuario)){
+            $_SESSION['message'] = "Usuário cadastrado com sucesso!";
+            header("Location: ../view/cadastro_u.php");
+            exit(0);
+        }else{
+            $_SESSION['messageerror'] = "Usuário NÃO foi cadastrado!";
+            header("Location: ../view/cadastro_u.php");
+            exit(0);
+        }
+    }
+    
+    catch(PDOException $e){
         $_SESSION['messageerror'] = "Usuário NÃO foi cadastrado!";
+        //$_SESSION['messageerror'] = "Erro: " . $e->getMessage();
         header("Location: ../view/cadastro_u.php");
-        exit(0);
+        exit();
     }
     
 }
@@ -145,18 +182,27 @@ if(isset($_POST['cadastra_e'])){
     $telefone = mysqli_real_escape_string($mysqli, $_POST['telefone']);
     $responsavel = mysqli_real_escape_string($mysqli, $_POST['responsavel']);
 
-    $query = "INSERT INTO empresa (cnpj, nome, nome_fantasia, endereco, telefone, responsavel) VALUES ('$cnpj', '$nome', '$nome_fantasia', '$endereco', '$telefone', '$responsavel')";
+    $codeDAO = new codeDAO;
+    $empresa = new Empresa($cnpj,$nome,$nome_fantasia,$endereco,$telefone,$responsavel);
 
+
+    try{
+        if($codeDAO->cadastraEmpresa($empresa)){
+            $_SESSION['message'] = "Empresa cadastrada com sucesso!";
+            header("Location: ../view/cadastro_e.php");
+            exit(0);
+        }else{
+            $_SESSION['messageerror'] = "Empresa NÃO foi cadastrada!";
+            header("Location: ../view/cadastro_e.php");
+            exit(0);
+        }
+    }
     
-    $query_run = mysqli_query($mysqli, $query);
-    if($query_run){
-        $_SESSION['message'] = "Empresa cadastrada com sucesso!";
-        header("Location: ../view/cadastro_e.php");
-        exit(0);
-    } else {
+    catch(PDOException $e){
         $_SESSION['messageerror'] = "Empresa NÃO foi cadastrada!";
+        //$_SESSION['messageerror'] = "Erro: " . $e->getMessage();
         header("Location: ../view/cadastro_e.php");
-        exit(0);
+        exit();
     }
     
 }
