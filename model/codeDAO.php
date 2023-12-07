@@ -205,6 +205,56 @@ class codeDAO{
             return false;
         }
     }
+
+
+    public function visualizarEmpresas(){
+        if(isset($_GET['busca'])){
+    
+            $pesquisa = '%'.$_GET['busca'].'%';
+            $query = "SELECT * FROM empresa WHERE nome LIKE :pesquisa OR nome_fantasia LIKE :pesquisa OR cnpj LIKE :pesquisa OR responsavel LIKE :pesquisa ORDER BY e_id";
+    
+            $query_run = $this->banco->prepare($query);
+            $query_run->bindParam(':pesquisa',$pesquisa,PDO::PARAM_STR);
+    
+            $query_run->execute();
+            
+            $resultado = $query_run->fetchColumn();
+            if($resultado > 0){
+                return $query_run->fetchAll(PDO::FETCH_ASSOC);
+            } else {
+                echo "<tr><td colspan='9'>Nenhum resultado encontrado...</td></tr>";
+                exit(0);
+            }   
+        }else{
+            $query="SELECT * FROM empresa";
+            $query_run = $this->banco->prepare($query);
+            $query_run->execute();
+    
+            return $query_run->fetchAll(PDO::FETCH_ASSOC);
+        }
+    }
+    
+    public function visualizarUsuarios(){
+        if(isset($_POST['busca'])){
+
+            $pesquisa = '%'. $_POST['busca'].'%';
+            $query = "SELECT * FROM usuarios WHERE nome LIKE :pesquisa";
+
+            $query_run = $this->banco->prepare($query);
+            //Proteção Sql injection
+            $query_run->bindParam(':pesquisa',$pesquisa,PDO::PARAM_STR);
+
+            $query_run->execute();
+
+            return $query_run->fetchAll(PDO::FETCH_ASSOC);
+        }else{
+            $query="SELECT * FROM usuarios";
+            $query_run = $this->banco->prepare($query);
+            $query_run->execute();
+    
+            return $query_run->fetchAll(PDO::FETCH_ASSOC);
+        }
+    }
     
 }
 
