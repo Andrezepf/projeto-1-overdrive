@@ -8,21 +8,31 @@ require('../model/empresa.php');
 
 if(isset($_POST['excluir_usuario'])){
     
-    $usuario_id = mysqli_real_escape_string($mysqli, $_POST['excluir_usuario']);
+    $usuario_id = $_POST['excluir_usuario'];
 
     
     if($usuario_id == $_SESSION['u_id']){
         $_SESSION['messageerror'] = "Você não pode excluir a si mesmo!";
         header("Location: ../view/tabela_up.php");
     } else {
-        $query = "DELETE FROM usuario WHERE u_id='$usuario_id'";
-        $query_run = mysqli_query($mysqli, $query);
-        if($query_run){
-            $_SESSION['message'] = "Usuário excluido com sucesso!";
-            header("Location: ../view/tabela_up.php");
-            exit(0);
-        } else {
-            $_SESSION['messageerror'] = "Usuário NÃO foi excluido!";
+        
+        $codeDAO = new codeDAO;
+
+        try{
+            if($codeDAO->deletaUsuario($usuario_id)){
+                $_SESSION['message'] = "Usuário excluido com sucesso!";
+                    header("Location: ../view/tabela_up.php");
+                    exit(0);
+            } else {
+                $_SESSION['messageerror'] = "Usuário NÃO foi excluido!";
+                    header("Location: ../view/tabela_up.php");
+                    exit(0);
+            }
+
+        }
+        catch(PDOException $e){
+            //$_SESSION['messageerror'] = "Usuário NÃO foi excluido!";
+            $_SESSION['messageerror'] = "Erro: " .$e->getMessage();
             header("Location: ../view/tabela_up.php");
             exit(0);
         }
@@ -30,20 +40,16 @@ if(isset($_POST['excluir_usuario'])){
 }
 
 if(isset($_POST['excluir_empresa'])){
-    $empresa_id = mysqli_real_escape_string($mysqli, $_POST['excluir_empresa']);
+    $empresa_id = $_POST['excluir_empresa'];
 
-    $query = "SELECT * FROM usuario WHERE empresa='$empresa_id'"; 
-                                
-    $query_run = mysqli_query($mysqli, $query);
+    $codeDAO = new codeDAO;
 
-    if(mysqli_num_rows($query_run) > 0){
+
+    if($codeDAO->consultaEmpresa($empresa_id)){
         $_SESSION['messageerror'] = "Empresa NÃO pode ser excluida pois possui funcionários vinculados!";
         header("Location: ../view/tabela_ep.php");
     }else{
-        $query = "DELETE FROM empresa WHERE e_id='$empresa_id'";
-        $query_run = mysqli_query($mysqli, $query);
-
-        if($query_run){
+        if($codeDAO->deletaEmpresa($empresa_id)){
             $_SESSION['message'] = "Empresa excluida com sucesso!";
             header("Location: ../view/tabela_ep.php");
             exit(0);
@@ -57,15 +63,15 @@ if(isset($_POST['excluir_empresa'])){
 
 
 if(isset($_POST['edita_u'])){
-    $usuario_id = mysqli_real_escape_string($mysqli, $_POST['usuario_id']);
-    $nome = mysqli_real_escape_string($mysqli, $_POST['nome']);
-    $cpf = mysqli_real_escape_string($mysqli, $_POST['cpf']);
-    $cnh = mysqli_real_escape_string($mysqli, $_POST['cnh']);
-    $telefone = mysqli_real_escape_string($mysqli, $_POST['telefone']);
-    $endereco = mysqli_real_escape_string($mysqli, $_POST['endereco']);
-    $carro = mysqli_real_escape_string($mysqli, $_POST['carro']);
-    $empresa = mysqli_real_escape_string($mysqli, $_POST['empresa']);
-    $acesso = mysqli_real_escape_string($mysqli, $_POST['acesso']);
+    $usuario_id = $_POST['usuario_id'];
+    $nome = $_POST['nome'];
+    $cpf = $_POST['cpf'];
+    $cnh = $_POST['cnh'];
+    $telefone = $_POST['telefone'];
+    $endereco = $_POST['endereco'];
+    $carro = $_POST['carro'];
+    $empresa = $_POST['empresa'];
+    $acesso = $_POST['acesso'];
 
     $codeDAO = new codeDAO; 
     $busca = $codeDAO->infoUsuario($usuario_id);
@@ -99,13 +105,13 @@ if(isset($_POST['edita_u'])){
 
 
 if(isset($_POST['edita_e'])){
-    $empresa_id = mysqli_real_escape_string($mysqli, $_POST['empresa_id']);
-    $cnpj = mysqli_real_escape_string($mysqli, $_POST['cnpj']);
-    $nome = mysqli_real_escape_string($mysqli, $_POST['nome']);
-    $nome_fantasia = mysqli_real_escape_string($mysqli, $_POST['nome_fantasia']);
-    $endereco = mysqli_real_escape_string($mysqli, $_POST['endereco']);
-    $telefone = mysqli_real_escape_string($mysqli, $_POST['telefone']);
-    $responsavel = mysqli_real_escape_string($mysqli, $_POST['responsavel']);
+    $empresa_id = $_POST['empresa_id'];
+    $cnpj = $_POST['cnpj'];
+    $nome = $_POST['nome'];
+    $nome_fantasia = $_POST['nome_fantasia'];
+    $endereco = $_POST['endereco'];
+    $telefone = $_POST['telefone'];
+    $responsavel = $_POST['responsavel'];
 
     $codeDAO = new codeDAO;
     $empresa = new Empresa($cnpj,$nome,$nome_fantasia,$endereco,$telefone,$responsavel);
@@ -137,15 +143,15 @@ if(isset($_POST['edita_e'])){
 
 if(isset($_POST['cadastra_u'])){
     
-    $nome = mysqli_real_escape_string($mysqli, $_POST['nome']);
-    $cpf = mysqli_real_escape_string($mysqli, $_POST['cpf']);
-    $cnh = mysqli_real_escape_string($mysqli, $_POST['cnh']);
-    $telefone = mysqli_real_escape_string($mysqli, $_POST['telefone']);
-    $endereco = mysqli_real_escape_string($mysqli, $_POST['endereco']);
-    $carro = mysqli_real_escape_string($mysqli, $_POST['carro']);
-    $empresa = mysqli_real_escape_string($mysqli, $_POST['empresa']);
-    $senha = mysqli_real_escape_string($mysqli, password_hash($_POST['senha'], PASSWORD_DEFAULT));
-    $acesso = mysqli_real_escape_string($mysqli, $_POST['acesso']);
+    $nome = $_POST['nome'];
+    $cpf = $_POST['cpf'];
+    $cnh = $_POST['cnh'];
+    $telefone = $_POST['telefone'];
+    $endereco = $_POST['endereco'];
+    $carro = $_POST['carro'];
+    $empresa = $_POST['empresa'];
+    $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+    $acesso = $_POST['acesso'];
 
     $codeDAO = new codeDAO;
     $usuario = new Usuario($nome,$cpf,$cnh,$telefone,$endereco,$carro,$empresa,$senha,$acesso);
@@ -175,12 +181,12 @@ if(isset($_POST['cadastra_u'])){
 
 if(isset($_POST['cadastra_e'])){
     
-    $cnpj = mysqli_real_escape_string($mysqli, $_POST['cnpj']);
-    $nome = mysqli_real_escape_string($mysqli, $_POST['nome']);
-    $nome_fantasia = mysqli_real_escape_string($mysqli, $_POST['nome_fantasia']);
-    $endereco = mysqli_real_escape_string($mysqli, $_POST['endereco']);
-    $telefone = mysqli_real_escape_string($mysqli, $_POST['telefone']);
-    $responsavel = mysqli_real_escape_string($mysqli, $_POST['responsavel']);
+    $cnpj = $_POST['cnpj'];
+    $nome = $_POST['nome'];
+    $nome_fantasia = $_POST['nome_fantasia'];
+    $endereco = $_POST['endereco'];
+    $telefone = $_POST['telefone'];
+    $responsavel = $_POST['responsavel'];
 
     $codeDAO = new codeDAO;
     $empresa = new Empresa($cnpj,$nome,$nome_fantasia,$endereco,$telefone,$responsavel);
@@ -208,9 +214,9 @@ if(isset($_POST['cadastra_e'])){
 }
 
 if(isset($_POST['edita_s'])){
-    $usuario_id = mysqli_real_escape_string($mysqli, $_POST['usuario_id']);
-    $nova_senha = mysqli_real_escape_string($mysqli, $_POST['nova_senha']);
-    $confirma_senha = mysqli_real_escape_string($mysqli, $_POST['confirma_senha']);
+    $usuario_id = $_POST['usuario_id'];
+    $nova_senha = $_POST['nova_senha'];
+    $confirma_senha = $_POST['confirma_senha'];
 
     $codeDAO = new codeDAO; 
     $busca = $codeDAO->infoUsuario($usuario_id);
@@ -226,7 +232,7 @@ if(isset($_POST['edita_s'])){
     
 
     if($nova_senha == $confirma_senha){
-        $senha = mysqli_real_escape_string($mysqli, password_hash($_POST['nova_senha'], PASSWORD_DEFAULT));
+        $senha = password_hash($_POST['nova_senha'], PASSWORD_DEFAULT);
         $usuario = new Usuario($nome,$cpf,$cnh,$telefone,$endereco,$carro,$empresa,$senha,$acesso);
 
         try {
@@ -264,9 +270,9 @@ if(isset($_POST['edita_s'])){
 }
 
 if(isset($_POST['edita_sl'])){
-    $usuario_id = mysqli_real_escape_string($mysqli, $_POST['usuario_id']);
-    $nova_senha = mysqli_real_escape_string($mysqli, $_POST['nova_senha']);
-    $confirma_senha = mysqli_real_escape_string($mysqli, $_POST['confirma_senha']);
+    $usuario_id = $_POST['usuario_id'];
+    $nova_senha = $_POST['nova_senha'];
+    $confirma_senha = $_POST['confirma_senha'];
 
     $codeDAO = new codeDAO; 
     $busca = $codeDAO->infoUsuario($usuario_id);
@@ -282,7 +288,7 @@ if(isset($_POST['edita_sl'])){
     if($usuario_id == $_SESSION['u_id']){
                 
         if($nova_senha == $confirma_senha){
-            $senha = mysqli_real_escape_string($mysqli, password_hash($_POST['nova_senha'], PASSWORD_DEFAULT));
+            $senha = password_hash($_POST['nova_senha'], PASSWORD_DEFAULT);
             $usuario = new Usuario($nome,$cpf,$cnh,$telefone,$endereco,$carro,$empresa,$senha,$acesso);
     
             try {

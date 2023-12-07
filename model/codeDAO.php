@@ -165,6 +165,46 @@ class codeDAO{
             exit();
         }
     }
+
+
+    public function deletaUsuario($u_id)
+    {
+        $query = "DELETE FROM usuario WHERE u_id = ?";
+        $dados = array($u_id);
+        $query_run = $this->banco->prepare($query);
+        if($query_run->execute($dados)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function deletaEmpresa($e_id)
+    {
+        $query = "DELETE FROM empresa WHERE e_id = ?";
+        $dados = array($e_id);
+        $query_run = $this->banco->prepare($query);
+        if($query_run->execute($dados)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
+    public function consultaEmpresa($e_id)
+    {
+        $query = "SELECT COUNT(*) FROM usuario WHERE empresa = ?";
+        $dados = array($e_id);
+        $query_run = $this->banco->prepare($query);
+        $query_run->execute($dados);
+        $resultado = $query_run->fetchColumn();
+        if($resultado > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
     
 }
 
