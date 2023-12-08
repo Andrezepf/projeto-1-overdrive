@@ -2,8 +2,10 @@
 session_start();
 include('../includes/header.php');
 include('../includes/navbar.php');
+require('../model/codeDAO.php');
 require '../controller/conexao.php';
 require '../controller/protect.php';
+$codeDAO = new codeDAO;
 ?>
 
 
@@ -16,18 +18,14 @@ require '../controller/protect.php';
                 <div class="card-header">
                 <?php
                     if(isset($_SESSION['u_id'])){
-                        $usuario_id = mysqli_real_escape_string($mysqli, $_SESSION['u_id']);
-                        $query = "SELECT * FROM usuario WHERE u_id='$usuario_id'";
-                        $query_run = mysqli_query($mysqli, $query);
-
-                        if(mysqli_num_rows($query_run) > 0){
-                            $dados = mysqli_fetch_array($query_run);
+                        $usuario_id = $_SESSION['u_id'];
+                        $dados = $codeDAO->localizarUsuario($usuario_id);
                             ?>
-                    <h4>Alterar senha
-                    <a href="../index.php" class="btn btn-danger float-end">Voltar</a>        
-                    </h4>
-                </div>
-                <div class="card-body">
+                            <h4>Alterar senha
+                            <a href="../index.php" class="btn btn-danger float-end">Voltar</a>        
+                            </h4>
+                        </div>
+                        <div class="card-body">
 
                     
                             
@@ -48,9 +46,7 @@ require '../controller/protect.php';
                                 </div>
                             </form>
                             <?php
-                        } else {
-                            echo "<h4>ID não encontrado.</h4>";
-                        }
+                        
                     }
                     ?>          
                             

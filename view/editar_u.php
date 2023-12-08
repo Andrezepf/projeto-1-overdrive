@@ -5,6 +5,7 @@ include('../includes/navbar.php');
 require('../model/codeDAO.php');
 require '../controller/conexao.php';
 require '../controller/protectadm.php';
+$codeDAO = new codeDAO;
 ?>
 
 
@@ -16,22 +17,16 @@ require '../controller/protectadm.php';
             <div class="card">
                 <div class="card-header">
                     <h4>Editar usuário
-                        <a href="./tabela_up.php" class="btn btn-danger float-end">Voltar</a>
-                        
+                        <a href="./tabela_up.php" class="btn btn-danger float-end">Voltar</a>   
                     </h4>
                 </div>
                 <div class="card-body">
 
                     <?php
                     if(isset($_GET['id'])){
-                        $usuario_id = mysqli_real_escape_string($mysqli, $_GET['id']);
-                        $query = "SELECT * FROM usuario WHERE u_id='$usuario_id'";
-                        $query_run = mysqli_query($mysqli, $query);
-
-                        if(mysqli_num_rows($query_run) > 0){
-                            $dados = mysqli_fetch_array($query_run);
-                            ?>
-                            
+                        $usuario_id = $_GET['id'];
+                            $dados = $codeDAO->localizarUsuario($usuario_id);
+                            ?>                            
                             <form action="../controller/code.php" method="post">
                                 <input type="hidden" name="usuario_id" value="<?= $dados['u_id']; ?>">
 
@@ -64,7 +59,7 @@ require '../controller/protectadm.php';
                                     <select name="empresa" id="empresa" class="form-select" required>
                                         
                                     <?php
-                                        $codeDAO = new codeDAO;
+                                        
                                         $resultado = $codeDAO->selectEmpresa(); 
                                         echo "<option value='{$dados['empresa']}'>Manter mesma empresa</option>";                              
                                             foreach($resultado as $dadosEmp){                                        
@@ -88,9 +83,7 @@ require '../controller/protectadm.php';
                             </form>
                             
                             <?php
-                        } else {
-                            echo "<h4>ID não encontrado.</h4>";
-                        }
+                        
                     }
                     ?>
                 </div>

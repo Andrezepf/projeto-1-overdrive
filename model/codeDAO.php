@@ -257,6 +257,55 @@ class codeDAO{
         $query_run->execute();
         return $query_run->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function localizarUsuario($usuario_id){
+        $query = "SELECT * FROM usuario WHERE u_id = :id";
+
+        $query_run = $this->banco->prepare($query);
+        $query_run->bindParam(':id',$usuario_id);
+        $query_run->execute();
+
+        $dados=$query_run->fetchAll(PDO::FETCH_ASSOC);
+        
+        if($dados){
+            return array(
+            'u_id' => $dados[0]['u_id'],
+            'nome' => $dados[0]['nome'],
+            'cpf' => $dados[0]['cpf'],
+            'cnh' => $dados[0]['cnh'],
+            'telefone' => $dados[0]['telefone'],
+            'endereco' => $dados[0]['endereco'],
+            'carro' => $dados[0]['carro'],
+            'empresa' => $dados[0]['empresa'],
+            'senha' => $dados[0]['senha'],
+            'acesso' => $dados[0]['acesso']
+            );
+        }
+ 
+    }
+
+    public function localizarEmpresa($empresa_id){
+        $query = "SELECT * FROM empresa WHERE e_id = :id";
+
+        $query_run = $this->banco->prepare($query);
+        $query_run->bindParam(':id',$empresa_id);
+        $query_run->execute();
+
+        $dados=$query_run->fetchAll(PDO::FETCH_ASSOC);
+        
+        if($dados){
+            return array(
+            'e_id' => $dados[0]['e_id'],
+            'cnpj' => $dados[0]['cnpj'],
+            'nome' => $dados[0]['nome'],
+            'nome_fantasia' => $dados[0]['nome_fantasia'],
+            'endereco' => $dados[0]['endereco'],
+            'telefone' => $dados[0]['telefone'],
+            'responsavel' => $dados[0]['responsavel']
+            );
+        }
+ 
+    }
     
 }
 
