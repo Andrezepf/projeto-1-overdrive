@@ -27,8 +27,8 @@ require '../controller/protect.php';
                     </div>
                     <div class="card-body">
 
-                        <form action="" class="mb-3">
-                            <input name="busca" style="width: 30%;" value="<?php if(isset($_GET['busca'])) echo $_GET['busca']; ?>" placeholder="Nome, Nome Fantasia, CNPJ ou Responsável" type="text" autofocus>
+                        <form action="" class="mb-3" method="get">
+                            <input name="busca" style="width: 30%;" value="<?php if(isset($_GET['busca'])) echo $_GET['busca']; ?>" placeholder="Nome, Nome Fantasia, CNPJ ou Responsável..." type="text" autofocus>
                             <button type="submit" >Pesquisar</button>
                         </form>
 

@@ -210,21 +210,15 @@ class codeDAO{
     public function visualizarEmpresas(){
         if(isset($_GET['busca'])){
     
-            $pesquisa = '%'.$_GET['busca'].'%';
+            $pesquisa = '%'. $_GET['busca'].'%';
             $query = "SELECT * FROM empresa WHERE nome LIKE :pesquisa OR nome_fantasia LIKE :pesquisa OR cnpj LIKE :pesquisa OR responsavel LIKE :pesquisa ORDER BY e_id";
     
             $query_run = $this->banco->prepare($query);
             $query_run->bindParam(':pesquisa',$pesquisa,PDO::PARAM_STR);
     
             $query_run->execute();
-            
-            $resultado = $query_run->fetchColumn();
-            if($resultado > 0){
-                return $query_run->fetchAll(PDO::FETCH_ASSOC);
-            } else {
-                echo "<tr><td colspan='9'>Nenhum resultado encontrado...</td></tr>";
-                exit(0);
-            }   
+    
+            return $query_run->fetchAll(PDO::FETCH_ASSOC);
         }else{
             $query="SELECT * FROM empresa";
             $query_run = $this->banco->prepare($query);
@@ -235,20 +229,19 @@ class codeDAO{
     }
     
     public function visualizarUsuarios(){
-        if(isset($_POST['busca'])){
+        if(isset($_GET['busca'])){
 
-            $pesquisa = '%'. $_POST['busca'].'%';
-            $query = "SELECT * FROM usuarios WHERE nome LIKE :pesquisa";
+            $pesquisa = '%'. $_GET['busca'].'%';
+            $query = "SELECT u.u_id, u.nome, u.cpf, u.cnh, u.telefone, u.endereco, u.carro, e.nome_fantasia as empresa from usuario as u join empresa as e on u.empresa = e.e_id WHERE u.cpf LIKE :pesquisa OR u.nome LIKE :pesquisa ORDER BY u.u_id";
 
             $query_run = $this->banco->prepare($query);
-            //Proteção Sql injection
             $query_run->bindParam(':pesquisa',$pesquisa,PDO::PARAM_STR);
 
             $query_run->execute();
 
             return $query_run->fetchAll(PDO::FETCH_ASSOC);
         }else{
-            $query="SELECT * FROM usuarios";
+            $query="SELECT u.u_id, u.nome, u.cpf, u.cnh, u.telefone, u.endereco, u.carro, e.nome_fantasia as empresa from usuario as u join empresa as e on u.empresa = e.e_id ORDER BY u.u_id";
             $query_run = $this->banco->prepare($query);
             $query_run->execute();
     
