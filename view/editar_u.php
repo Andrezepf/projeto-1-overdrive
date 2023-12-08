@@ -2,6 +2,7 @@
 session_start();
 include('../includes/header.php');
 include('../includes/navbar.php');
+require('../model/codeDAO.php');
 require '../controller/conexao.php';
 require '../controller/protectadm.php';
 ?>
@@ -63,14 +64,13 @@ require '../controller/protectadm.php';
                                     <select name="empresa" id="empresa" class="form-select" required>
                                         
                                     <?php
-                                        $query2 = "SELECT * FROM empresa";
-                                        $query_run2 = mysqli_query($mysqli, $query2);
-                                        echo "<option value='{$dados['empresa']}'>Manter mesma empresa</option>";
-                                        if(mysqli_num_rows($query_run2) > 0){
-                                            foreach($query_run2 as $dados2){                                        
-                                                echo "<option value='{$dados2['e_id']}'>{$dados2['nome_fantasia']}</option>";                                       
-                                            }
-                                        }
+                                        $codeDAO = new codeDAO;
+                                        $resultado = $codeDAO->selectEmpresa(); 
+                                        echo "<option value='{$dados['empresa']}'>Manter mesma empresa</option>";                              
+                                            foreach($resultado as $dadosEmp){                                        
+                                                echo "<option value='{$dadosEmp['e_id']}'>{$dadosEmp['nome_fantasia']}</option>";                                       
+                                            } 
+                                        
                                         ?>
                                     </select>
                                 </div>

@@ -248,6 +248,15 @@ class codeDAO{
             return $query_run->fetchAll(PDO::FETCH_ASSOC);
         }
     }
+
+
+
+    public function selectEmpresa(){
+        $query = "SELECT * FROM empresa";
+        $query_run = $this->banco->prepare($query);
+        $query_run->execute();
+        return $query_run->fetchAll(PDO::FETCH_ASSOC);
+    }
     
 }
 
