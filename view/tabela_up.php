@@ -35,9 +35,9 @@ $codeDAO = new codeDAO;
                                 <tr>
                                     <th scope="col">ID</th>
                                     <th scope="col">Nome</th>
-                                    <th>CPF</th>
+                                    <th style="width:130px">CPF</th>
                                     <th>CNH</th>
-                                    <th>Telefone</th>
+                                    <th style="width:140px">Telefone</th>
                                     <th>Endereço</th>
                                     <th>Carro</th>
                                     <th>Empresa</th>

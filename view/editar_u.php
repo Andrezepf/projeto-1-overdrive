@@ -33,7 +33,7 @@ $codeDAO = new codeDAO;
                                 </div>
                                 <div class="mb-3">
                                     <label>CPF</label>
-                                    <input type="text" name="cpf" value="<?=$dados['cpf']; ?>" class="form-control" required minlength="11" maxlength="11">
+                                    <input type="text" name="cpf" value="<?=$dados['cpf']; ?>" class="form-control" required minlength="14" maxlength="14" onkeyup="maskcpf(event)">
                                 </div>
                                 <div class="mb-3">
                                     <label>CNH</label>
@@ -41,7 +41,7 @@ $codeDAO = new codeDAO;
                                 </div>
                                 <div class="mb-3">
                                     <label>Telefone</label>
-                                    <input type="text" name="telefone" value="<?=$dados['telefone']; ?>" class="form-control" required minlength="10" maxlength="15">
+                                    <input type="tel" name="telefone" value="<?=$dados['telefone']; ?>" class="form-control" required minlength="10" maxlength="15" onkeyup="handlePhone(event)">
                                 </div>
                                 <div class="mb-3">
                                     <label>Endereço</label>

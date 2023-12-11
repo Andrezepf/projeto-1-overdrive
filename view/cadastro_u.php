@@ -27,7 +27,7 @@ $codeDAO = new codeDAO;
                         </div>
                         <div class="mb-3">
                             <label>CPF</label>
-                            <input type="text" name="cpf" class="form-control" required minlength="11" maxlength="11" placeholder="Insira CPF (somente números)">
+                            <input type="text" name="cpf" class="form-control" required minlength="14" maxlength="14" placeholder="Insira CPF (somente números)" onkeyup="maskcpf(event)">
                         </div>
                         <div class="mb-3">
                             <label>CNH</label>
@@ -35,7 +35,7 @@ $codeDAO = new codeDAO;
                         </div>
                         <div class="mb-3">
                             <label>Telefone</label>
-                            <input type="text" name="telefone" class="form-control" required minlength="9" maxlength="15" placeholder="Insira Telefone">
+                            <input type="tel" name="telefone" class="form-control" required minlength="9" maxlength="15" placeholder="DDD + Número" onkeyup="handlePhone(event)">
                         </div>
                         <div class="mb-3">
                             <label>Endereço</label>

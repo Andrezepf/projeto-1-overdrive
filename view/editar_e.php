@@ -29,7 +29,7 @@ $codeDAO = new codeDAO;
                                 <div class="mb-3">
                                 <div class="mb-3">
                                     <label>CNPJ</label>
-                                    <input type="text" name="cnpj" value="<?=$dados['cnpj']; ?>" class="form-control" required minlength="14" maxlength="14">
+                                    <input type="text" name="cnpj" value="<?=$dados['cnpj']; ?>" class="form-control" required minlength="18" maxlength="18" onkeyup="maskcnpj(event)">
                                 </div>
                                     <label>Nome</label>
                                     <input type="text" name="nome" value="<?=$dados['nome']; ?>" class="form-control" required minlength="5" maxlength="255">
@@ -40,11 +40,11 @@ $codeDAO = new codeDAO;
                                 </div>
                                 <div class="mb-3">
                                     <label>Endereço</label>
-                                    <input type="text" name="endereco" value="<?=$dados['endereco']; ?>" class="form-control" required minlength="5" maxlength="50">
+                                    <input type="text" name="endereco" value="<?=$dados['endereco']; ?>" class="form-control" required minlength="5" maxlength="255">
                                 </div>
                                 <div class="mb-3">
                                     <label>Telefone</label>
-                                    <input type="text" name="telefone" value="<?=$dados['telefone']; ?>" class="form-control" required minlength="9" maxlength="255">
+                                    <input type="text" name="telefone" value="<?=$dados['telefone']; ?>" class="form-control" required minlength="9" maxlength="15" onkeyup="handlePhone(event)">
                                 </div>                                
                                 <div class="mb-3">
                                     <label>Responsável</label>

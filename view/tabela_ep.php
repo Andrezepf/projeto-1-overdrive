@@ -34,7 +34,7 @@ $codeDAO = new codeDAO;
                             <thead class="table-dark">
                                 <tr>
                                     <th>ID</th>
-                                    <th>CNPJ</th>
+                                    <th style="width:160px">CNPJ</th>
                                     <th>Nome</th>
                                     <th>Nome Fantasia</th>
                                     <th>Endereço</th>

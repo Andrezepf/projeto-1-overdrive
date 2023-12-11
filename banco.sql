@@ -31,7 +31,7 @@ USE `overdrive`;
 
 CREATE TABLE IF NOT EXISTS `empresa` (
   `e_id` int NOT NULL AUTO_INCREMENT,
-  `cnpj` varchar(14) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `cnpj` varchar(18) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `nome` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `nome_fantasia` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `endereco` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
@@ -60,7 +60,7 @@ INSERT INTO `empresa` (`e_id`, `cnpj`, `nome`, `nome_fantasia`, `endereco`, `tel
 CREATE TABLE IF NOT EXISTS `usuario` (
   `u_id` int NOT NULL AUTO_INCREMENT,
   `nome` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `cpf` varchar(11) NOT NULL,
+  `cpf` varchar(14) NOT NULL,
   `cnh` varchar(20) DEFAULT NULL,
   `telefone` varchar(15) DEFAULT NULL,
   `endereco` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,

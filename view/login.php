@@ -37,7 +37,7 @@ if(isset($_POST['cpf']) || isset($_POST['senha'])){
                         <form action="" method="post">
                             <div class="form-group mb-3">
                                 <label>CPF</label>
-                                <input type="text" name="cpf" placeholder="Insira seu CPF (somente números)" class="form-control">
+                                <input type="text" name="cpf" placeholder="Insira seu CPF (somente números)" class="form-control" maxlength="14" onkeyup="maskcpf(event)">
                             </div>
                             <div class="form-group mb-3">
                                 <label>Senha</label>
