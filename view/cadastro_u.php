@@ -3,10 +3,9 @@ session_start();
 include('../includes/header.php');
 include('../includes/navbar.php');
 require('../model/codeDAO.php');
-require '../controller/conexao.php';
 require '../controller/protectadm.php';
+$codeDAO = new codeDAO;
 ?>
-
 
 <div class="container mt-5">    
     <div class="row justify-content-center">
@@ -54,8 +53,7 @@ require '../controller/protectadm.php';
                             <label>Empresa</label>
                             <select name="empresa" id="empresa" class="form-select" required>
                                 <option value="">Selecione uma Empresa...</option>
-                            <?php
-                            $codeDAO = new codeDAO;
+                            <?php                           
                             $resultado = $codeDAO->selectEmpresa();                               
                                 foreach($resultado as $dados){                                        
                                     echo "<option value='{$dados['e_id']}'>{$dados['nome_fantasia']}</option>";                                       

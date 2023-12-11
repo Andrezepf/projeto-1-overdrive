@@ -3,11 +3,9 @@ session_start();
 include('../includes/header.php');
 include('../includes/navbar.php');
 require('../model/codeDAO.php');
-require '../controller/conexao.php';
 require '../controller/protectadm.php';
 $codeDAO = new codeDAO;
 ?>
-
 
 <div class="container mt-5">   
     <div class="row justify-content-center">
@@ -21,7 +19,6 @@ $codeDAO = new codeDAO;
                     </h4>
                 </div>
                 <div class="card-body">
-
                     <?php
                     if(isset($_GET['id'])){
                         $empresa_id = $_GET['id'];
@@ -29,7 +26,6 @@ $codeDAO = new codeDAO;
                             ?>                           
                             <form action="../controller/code.php" method="post">
                                 <input type="hidden" name="empresa_id" value="<?= $dados['e_id']; ?>">
-
                                 <div class="mb-3">
                                 <div class="mb-3">
                                     <label>CNPJ</label>
@@ -53,13 +49,11 @@ $codeDAO = new codeDAO;
                                 <div class="mb-3">
                                     <label>Responsável</label>
                                     <input type="text" name="responsavel" value="<?=$dados['responsavel']; ?>" class="form-control" required minlength="5" maxlength="255">
-                                </div>
-                                
+                                </div>                                
                                 <div class="mb-3">
                                     <button type="submit" name="edita_e" class="btn btn-dark">Salvar mudanças</button>
                                 </div>
-                            </form>
-                            
+                            </form>                           
                             <?php
                     }
                     ?>
@@ -68,15 +62,6 @@ $codeDAO = new codeDAO;
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
 
 
 

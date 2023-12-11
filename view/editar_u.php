@@ -3,7 +3,6 @@ session_start();
 include('../includes/header.php');
 include('../includes/navbar.php');
 require('../model/codeDAO.php');
-require '../controller/conexao.php';
 require '../controller/protectadm.php';
 $codeDAO = new codeDAO;
 ?>
@@ -21,7 +20,6 @@ $codeDAO = new codeDAO;
                     </h4>
                 </div>
                 <div class="card-body">
-
                     <?php
                     if(isset($_GET['id'])){
                         $usuario_id = $_GET['id'];
@@ -29,7 +27,6 @@ $codeDAO = new codeDAO;
                             ?>                            
                             <form action="../controller/code.php" method="post">
                                 <input type="hidden" name="usuario_id" value="<?= $dados['u_id']; ?>">
-
                                 <div class="mb-3">
                                     <label>Nome</label>
                                     <input type="text" name="nome" value="<?=$dados['nome']; ?>" class="form-control" required minlength="5" maxlength="255">
@@ -58,14 +55,12 @@ $codeDAO = new codeDAO;
                                     <label>Empresa</label>
                                     <select name="empresa" id="empresa" class="form-select" required>
                                         
-                                    <?php
-                                        
+                                    <?php                                       
                                         $resultado = $codeDAO->selectEmpresa(); 
                                         echo "<option value='{$dados['empresa']}'>Manter mesma empresa</option>";                              
                                             foreach($resultado as $dadosEmp){                                        
                                                 echo "<option value='{$dadosEmp['e_id']}'>{$dadosEmp['nome_fantasia']}</option>";                                       
-                                            } 
-                                        
+                                            }                                        
                                         ?>
                                     </select>
                                 </div>
@@ -80,10 +75,8 @@ $codeDAO = new codeDAO;
                                     <button type="submit" name="edita_u" class="btn btn-dark">Salvar mudanças</button>
                                     <a href="editar_s.php?id=<?= $dados['u_id']; ?>" class="btn btn-danger float-end">Alterar senha</a>
                                 </div>
-                            </form>
-                            
-                            <?php
-                        
+                            </form>                           
+                            <?php                       
                     }
                     ?>
                 </div>
@@ -91,15 +84,6 @@ $codeDAO = new codeDAO;
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
 
 
 

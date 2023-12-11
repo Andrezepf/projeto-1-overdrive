@@ -25,13 +25,9 @@ $codeDAO = new codeDAO;
                     <a href="editar_u.php?id=<?= $usuario_id; ?>" class="btn btn-danger float-end">Voltar</a>        
                     </h4>
                 </div>
-                <div class="card-body">
-
-                    
-                            
+                <div class="card-body">                            
                             <form action="../controller/code.php" method="post">
                                 <input type="hidden" name="usuario_id" value="<?= $dados['u_id']; ?>">
-
                                 <div class="mb-3">
                                     <label>Nova senha</label>
                                     <input type="password" name="nova_senha" placeholder="Digite a nova senha" class="form-control" required minlength="4" maxlength="30">
@@ -45,11 +41,9 @@ $codeDAO = new codeDAO;
                                     
                                 </div>
                             </form>
-                            <?php
-                        
+                            <?php                        
                     }
-                    ?>          
-                            
+                    ?>                                     
                 </div>
             </div>
         </div>

@@ -1,9 +1,9 @@
 <?php
 session_start();
-require 'conexao.php';
 require('../model/codeDAO.php');
 require('../model/usuario.php');
 require('../model/empresa.php');
+$codeDAO = new codeDAO;
 
 
 if(isset($_POST['excluir_usuario'])){
@@ -31,8 +31,8 @@ if(isset($_POST['excluir_usuario'])){
 
         }
         catch(PDOException $e){
-            //$_SESSION['messageerror'] = "Usuário NÃO foi excluido!";
-            $_SESSION['messageerror'] = "Erro: " .$e->getMessage();
+            $_SESSION['messageerror'] = "Usuário NÃO foi excluido!";
+            //$_SESSION['messageerror'] = "Erro: " .$e->getMessage();
             header("Location: ../view/tabela_up.php");
             exit(0);
         }

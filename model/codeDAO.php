@@ -306,6 +306,33 @@ class codeDAO{
         }
  
     }
+
+
+    public function login($cpf,$senha)
+    {
+        $query = $this->banco->prepare("SELECT * FROM usuario WHERE cpf = :cpf");
+
+        $query->bindParam(':cpf',$cpf);
+        
+        $query->execute();
+        $usuario = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        if($usuario){
+            if(password_verify($senha,$usuario[0]['senha'])){
+                $_SESSION['nome'] = $usuario[0]['nome'];
+                $_SESSION['u_id'] = $usuario[0]['u_id'];
+                $_SESSION['acesso'] = $usuario[0]['acesso'];
+
+                header("Location: ../index.php");
+                exit(0);
+                
+            } else {
+                $_SESSION['messageerror'] = "Falha ao logar! CPF ou senha incorretos!";               
+            }
+        } else {
+            $_SESSION['messageerror'] = "Falha ao logar! CPF ou senha incorretos!";
+        }
+    }
     
 }
 
