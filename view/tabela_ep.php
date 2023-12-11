@@ -38,7 +38,7 @@ $codeDAO = new codeDAO;
                                     <th>Nome</th>
                                     <th>Nome Fantasia</th>
                                     <th>Endereço</th>
-                                    <th>Telefone</th>
+                                    <th style="width:140px">Telefone</th>
                                     <th>Responsável</th>
                                     <?php
                                     if($_SESSION['acesso'] == 1){
@@ -52,6 +52,13 @@ $codeDAO = new codeDAO;
                             <tbody>
                                 <?php                                     
                                 $resultado = $codeDAO->visualizarEmpresas();
+                                if ($resultado == null){
+                                    ?>
+                                    <tr>
+                                        <td colspan="9">Nenhum resultado encontrado...</td>
+                                    </tr>
+                                    <?php
+                                } else{
                                     foreach($resultado as $dados){
                                     ?>
                                     <tr>
@@ -77,6 +84,7 @@ $codeDAO = new codeDAO;
                                     </tr>
                                     <?php
                                     }
+                                }
                                 ?>                           
                             </tbody>
                         </table>

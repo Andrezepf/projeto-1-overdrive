@@ -53,6 +53,14 @@ $codeDAO = new codeDAO;
                             <tbody>
                                 <?php                                        
                                 $resultado = $codeDAO->visualizarUsuarios();
+                                if ($resultado == null){
+                                    ?>
+                                    <tr>
+                                        <td colspan="9">Nenhum resultado encontrado...</td>
+                                    </tr>
+                                    <?php
+                                } else{
+
                                 foreach($resultado as $dados){
                                 ?>
                                     <tr>
@@ -79,6 +87,7 @@ $codeDAO = new codeDAO;
                                     </tr>
                                 <?php
                                 }
+                            }
                                 ?>
                             </tbody>
                         </table>
