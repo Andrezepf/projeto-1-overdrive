@@ -3,7 +3,6 @@ session_start();
 include('../includes/header.php');
 include('../includes/navbar.php');
 require('../model/codeDAO.php');
-require '../controller/conexao.php';
 require '../controller/protectadm.php';
 $codeDAO = new codeDAO;
 ?>
