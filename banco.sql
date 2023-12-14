@@ -49,7 +49,7 @@ INSERT INTO `empresa` (`e_id`, `cnpj`, `nome`, `nome_fantasia`, `endereco`, `tel
 (1, '12.345.678/0001-58', 'Empresa fictícia de desenvolvimento ltda. ', 'Empresa Dev', 'Avenida Ipiranga, nº 6700', '(51) 3357-5642', 'Josias da Silva'),
 (10, '32.132.131/0001-45', 'Luz elétrica geradores de energia ltda.', 'Geraluz', 'Avenida Getúlio Vargas, nº457', '(51) 3387-5656', 'Rafaela Soares de Almeida'),
 (3, '87.654.321/0001-26', 'Manutenção de computadores e eletrônicos do Marcos ltda.', 'Arrumarcos', 'Rua Borges de Medeiros, nº 932, sala 708', '(51) 3333-2628', 'Marcos Oliveira Santos'),
-(6, '12.312.312/0001-78', 'Companhia mercúrio de transportes e carregamentos ltda.', 'Mercúrio Transportes', 'Rua com o nome inventado, nº333', '(19) 99874-4523', 'Nícolas Manuel Barbeiro');
+(6, '12.312.312/0001-78', 'Companhia mercúrio de transportes e carregamentos ltda.', 'Mercúrio Transportes', 'Avenida Protásio Alves, nº333', '(19) 99874-4523', 'Nícolas Manuel Barbeiro');
 
 -- --------------------------------------------------------
 
@@ -85,7 +85,7 @@ INSERT INTO `usuario` (`u_id`, `nome`, `cpf`, `cnh`, `telefone`, `endereco`, `ca
 (6, 'João Senha de Almeida Barros', '123.456.789-15', '33642187654', '(19) 99385-8542', 'Rua Quinze de Novembro, nº900', 'Hyundai HB20', 3, '$2y$10$a9r8XRljaKRafu3VvekeoujxX2W5TBKvxAyaCW5JeNg9Jshhf7cMy', 0),
 (7, 'Andreia Martins Lopes', '123.456.789-16', '86457219546', '(51) 98465-3515', 'Rua Tiradentes, nº754, apto 201', 'Chevrolet Onix Plus', 3, '$2y$10$92.1hXMq.If9254zh/XGzu9DNRjm0a.peCbu1nvNgS0nRxUwU9NDe', 1),
 (23, 'Joana Nascimento de Andrade', '324.234.233-33', '82414123579', '(51) 99785-4141', 'Rua São Francisco, nº632', 'Renault Kwid', 10, '$2y$10$UuLHFQDHavoHnymbTdN9purJFd0koCpIrE2HLCLlnkB.r0S7jmEfu', 0),
-(26, 'Administrador', '111.111.111-11', '23423423522', '(19) 99745-8787', 'Rua José de Alencar, nº800', 'Volkswagen T-Cross', 3, '$2y$10$xAre/OiZOCKFqcDVv0Khee26IpKSP5eZl4rATmTe1FuCMLecdlrS.', 1),
+(26, 'Camila dos Santos Reis', '111.111.111-11', '23423423522', '(19) 99745-8787', 'Rua José de Alencar, nº800', 'Volkswagen T-Cross', 3, '$2y$10$xAre/OiZOCKFqcDVv0Khee26IpKSP5eZl4rATmTe1FuCMLecdlrS.', 1),
 (25, 'Mariana Machado Mendes', '324.234.235-32', '32423423477', '(51) 99636-3647', 'Rua Tiradentes, nº754, apto 202', 'Chevrolet Tracker', 1, '$2y$10$M1Z1o6.7wivlDOnWz2QuzOlGuV7dMp79Wdrx641hsgyoNQyOd0MMq', 0),
 (29, 'Diogo Ribeiro de Lima', '324.235.233-21', '23523423563', '(51) 3314-5287', 'Avenida Aparício Borges, nº4000', 'Hyundai Creta', 6, '$2y$10$vn1wFtAF.28wKao4RMfFWeFqJsYUc2pcVE5k60shhaVLiPgXdCcWq', 1),
 (39, 'Alexandre José de Oliveira da Silva Pereira', '333.333.333-33', '43252342342', '(32) 5243-5235', 'Avenida Marechal Guilherme Antônio de Ferreira nº1', 'Ford Ka', 6, '$2y$10$2zEVAlHX6BYX2l8kNDQArODOihTD.kT.PJxLKxCwa.mKgE3RVK00G', 0),
