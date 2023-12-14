@@ -20,7 +20,6 @@ $codeDAO = new codeDAO;
                 </div>
                 <div class="card-body">
                     <form action="../controller/code.php" method="post">
-
                         <div class="mb-3">
                             <label>CNPJ</label>
                             <input type="text" name="cnpj" class="form-control" required minlength="18" maxlength="18" placeholder="Insira CNPJ (somente números)" onkeyup="maskcnpj(event)">

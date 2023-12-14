@@ -20,7 +20,6 @@ $codeDAO = new codeDAO;
                 </div>
                 <div class="card-body">
                     <form action="../controller/code.php" method="post">
-
                         <div class="mb-3">
                             <label>Nome</label>
                             <input type="text" name="nome" class="form-control" required minlength="5" maxlength="255" placeholder="Insira Nome">
@@ -53,8 +52,8 @@ $codeDAO = new codeDAO;
                             <label>Empresa</label>
                             <select name="empresa" id="empresa" class="form-select" required>
                                 <option value="">Selecione uma Empresa...</option>
-                            <?php                           
-                            $resultado = $codeDAO->selectEmpresa();                               
+                                <?php                           
+                                $resultado = $codeDAO->selectEmpresa();                               
                                 foreach($resultado as $dados){                                        
                                     echo "<option value='{$dados['e_id']}'>{$dados['nome_fantasia']}</option>";                                       
                                 }                               
@@ -77,16 +76,6 @@ $codeDAO = new codeDAO;
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
 
 
 <?php

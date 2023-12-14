@@ -220,7 +220,7 @@ class codeDAO{
     
             return $query_run->fetchAll(PDO::FETCH_ASSOC);
         }else{
-            $query="SELECT * FROM empresa";
+            $query="SELECT * FROM empresa ORDER BY e_id";
             $query_run = $this->banco->prepare($query);
             $query_run->execute();
     

@@ -18,11 +18,11 @@ $codeDAO = new codeDAO;
                         <h4>Funcionários
                         <?php
                             if($_SESSION['acesso'] == 1){
-                        ?>
-                        <a href="cadastro_u.php" class="btn btn-dark float-end">Adicionar Funcionário</a>
-                        <?php
+                            ?>
+                                <a href="cadastro_u.php" class="btn btn-dark float-end">Adicionar Funcionário</a>
+                            <?php
                             }
-                        ?>
+                            ?>
                         </h4>
                     </div>
                     <div class="card-body">
@@ -44,9 +44,9 @@ $codeDAO = new codeDAO;
                                     <?php
                                     if($_SESSION['acesso'] == 1){
                                     ?>
-                                    <th>Ação</th>
+                                        <th>Ação</th>
                                     <?php
-                                        }
+                                    }
                                     ?> 
                                 </tr>
                             </thead>                           
@@ -59,35 +59,34 @@ $codeDAO = new codeDAO;
                                         <td colspan="9">Nenhum resultado encontrado...</td>
                                     </tr>
                                     <?php
-                                } else{
-
-                                foreach($resultado as $dados){
-                                ?>
-                                    <tr>
-                                    <td><?php echo $dados['u_id']; ?></td>
-                                    <td><?php echo $dados['nome']; ?></td>
-                                    <td><?php echo $dados['cpf']; ?></td>
-                                    <td><?php echo $dados['cnh']; ?></td>
-                                    <td><?php echo $dados['telefone']; ?></td>
-                                    <td><?php echo $dados['endereco']; ?></td>
-                                    <td><?php echo $dados['carro']; ?></td>
-                                    <td><?php echo $dados['empresa']; ?></td>
-                                    <?php
-                                        if($_SESSION['acesso'] == 1){
+                                } else {
+                                    foreach($resultado as $dados){
                                     ?>
-                                    <td style="text-align: center;">
-                                        <a href="editar_u.php?id=<?= $dados['u_id']; ?>" class="btn btn-dark btn-sm col-lg-12 mb-1">Editar</a>
-                                        <form action="../controller/code.php" method="post" class="d-inline" onSubmit="return confirm('Você realmente quer excluir esse funcionário?');">
-                                            <button type="submit" name="excluir_usuario" value="<?= $dados['u_id']; ?>" class="btn btn-danger btn-sm col-lg-12">Excluir</button>
-                                        </form>
-                                    </td>
+                                        <tr>
+                                            <td><?php echo $dados['u_id']; ?></td>
+                                            <td><?php echo $dados['nome']; ?></td>
+                                            <td><?php echo $dados['cpf']; ?></td>
+                                            <td><?php echo $dados['cnh']; ?></td>
+                                            <td><?php echo $dados['telefone']; ?></td>
+                                            <td><?php echo $dados['endereco']; ?></td>
+                                            <td><?php echo $dados['carro']; ?></td>
+                                            <td><?php echo $dados['empresa']; ?></td>
+                                            <?php
+                                            if($_SESSION['acesso'] == 1){
+                                            ?>
+                                                <td style="text-align: center;">
+                                                    <a href="editar_u.php?id=<?= $dados['u_id']; ?>" class="btn btn-dark btn-sm col-lg-12 mb-1">Editar</a>
+                                                    <form action="../controller/code.php" method="post" class="d-inline" onSubmit="return confirm('Você realmente quer excluir esse funcionário?');">
+                                                        <button type="submit" name="excluir_usuario" value="<?= $dados['u_id']; ?>" class="btn btn-danger btn-sm col-lg-12">Excluir</button>
+                                                    </form>
+                                                </td>
+                                            <?php
+                                            }
+                                            ?>
+                                        </tr>
                                     <?php
-                                        }
-                                    ?>
-                                    </tr>
-                                <?php
+                                    }
                                 }
-                            }
                                 ?>
                             </tbody>
                         </table>

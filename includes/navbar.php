@@ -31,12 +31,12 @@
           <li class="nav-item">
             <a class="nav-link" href="./tabela_ep.php">Empresas</a>
           </li>
-            <li class="nav-item">
+          <li class="nav-item">
             <a class="nav-link" href="../controller/logout.php">Logout</a>
           </li>
           <?php
-      }
-      ?>
+        }
+        ?>
       </ul>      
     </div>
   </div>

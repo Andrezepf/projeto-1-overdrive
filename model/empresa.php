@@ -30,7 +30,6 @@ class Empresa{
 
     public function setCnpj($cnpj){
         $this->cnpj = $cnpj;
-
         return $this;
     }
 
@@ -42,7 +41,6 @@ class Empresa{
 
     public function setNome($nome){
         $this->nome = $nome;
-
         return $this;
     }
 
@@ -54,7 +52,6 @@ class Empresa{
 
     public function setNome_fantasia($nome_fantasia){
         $this->nome_fantasia = $nome_fantasia;
-
         return $this;
     }
 
@@ -66,7 +63,6 @@ class Empresa{
 
     public function setEndereco($endereco){
         $this->endereco = $endereco;
-
         return $this;
     }
 
@@ -78,7 +74,6 @@ class Empresa{
 
     public function setTelefone($telefone){
         $this->telefone = $telefone;
-
         return $this;
     }
 
@@ -90,7 +85,6 @@ class Empresa{
 
     public function setResponsavel($responsavel){
         $this->responsavel = $responsavel;
-
         return $this;
     }
 }

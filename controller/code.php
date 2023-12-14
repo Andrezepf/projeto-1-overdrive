@@ -9,7 +9,6 @@ $codeDAO = new codeDAO;
 if(isset($_POST['excluir_usuario'])){
     
     $usuario_id = $_POST['excluir_usuario'];
-
     
     if($usuario_id == $_SESSION['u_id']){
         $_SESSION['messageerror'] = "Você não pode excluir a si mesmo!";
@@ -21,29 +20,28 @@ if(isset($_POST['excluir_usuario'])){
         try{
             if($codeDAO->deletaUsuario($usuario_id)){
                 $_SESSION['message'] = "Usuário excluido com sucesso!";
-                    header("Location: ../view/tabela_up.php");
-                    exit(0);
+                header("Location: ../view/tabela_up.php");
+                exit(0);
             } else {
                 $_SESSION['messageerror'] = "Usuário NÃO foi excluido!";
-                    header("Location: ../view/tabela_up.php");
-                    exit(0);
+                header("Location: ../view/tabela_up.php");
+                exit(0);
             }
-
         }
         catch(PDOException $e){
             $_SESSION['messageerror'] = "Usuário NÃO foi excluido!";
-            //$_SESSION['messageerror'] = "Erro: " .$e->getMessage();
+            //$_SESSION['messageerror'] = "Erro: " . $e->getMessage();
             header("Location: ../view/tabela_up.php");
             exit(0);
         }
     }
 }
 
+
 if(isset($_POST['excluir_empresa'])){
     $empresa_id = $_POST['excluir_empresa'];
 
     $codeDAO = new codeDAO;
-
 
     if($codeDAO->consultaEmpresa($empresa_id)){
         $_SESSION['messageerror'] = "Empresa NÃO pode ser excluida pois possui funcionários vinculados!";
@@ -79,9 +77,7 @@ if(isset($_POST['edita_u'])){
 
     $usuario = new Usuario($nome,$cpf,$cnh,$telefone,$endereco,$carro,$empresa,$senha,$acesso);
 
-
-    try{
-    
+    try{    
         if($codeDAO->editaUsuario($usuario,$usuario_id)){
             $_SESSION['message'] = "Usuário atualizado com sucesso!";
             header("Location: ../view/tabela_up.php");
@@ -90,10 +86,8 @@ if(isset($_POST['edita_u'])){
             $_SESSION['messageerror'] = "Usuário NÃO foi atualizado!";
             header("Location: ../view/tabela_up.php");
             exit(0);
-        }
-    
-    }
-    
+        }    
+    }   
     catch(PDOException $e){
         $_SESSION['messageerror'] = "Usuário NÃO foi atualizado!";
         //$_SESSION['messageerror'] = "Erro: " . $e->getMessage();
@@ -101,7 +95,6 @@ if(isset($_POST['edita_u'])){
         exit(0);
     }
 }
-
 
 
 if(isset($_POST['edita_e'])){
@@ -117,8 +110,7 @@ if(isset($_POST['edita_e'])){
     $empresa = new Empresa($cnpj,$nome,$nome_fantasia,$endereco,$telefone,$responsavel);
 
 
-    try {
-    
+    try {   
         if($codeDAO->editaEmpresa($empresa,$empresa_id)){
             $_SESSION['message'] = "Empresa atualizada com sucesso!";
             header("Location: ../view/tabela_ep.php");
@@ -127,10 +119,8 @@ if(isset($_POST['edita_e'])){
             $_SESSION['messageerror'] = "Empresa NÃO foi atualizada!";
             header("Location: ../view/tabela_ep.php");
             exit(0);
-        }
-    
-    } 
-    
+        }   
+    }    
     catch(PDOException $e){
         $_SESSION['messageerror'] = "Empresa NÃO foi atualizada!";
         //$_SESSION['messageerror'] = "Erro: " . $e->getMessage();
@@ -140,9 +130,7 @@ if(isset($_POST['edita_e'])){
 }
 
 
-
-if(isset($_POST['cadastra_u'])){
-    
+if(isset($_POST['cadastra_u'])){    
     $nome = $_POST['nome'];
     $cpf = $_POST['cpf'];
     $cnh = $_POST['cnh'];
@@ -156,7 +144,6 @@ if(isset($_POST['cadastra_u'])){
     $codeDAO = new codeDAO;
     $usuario = new Usuario($nome,$cpf,$cnh,$telefone,$endereco,$carro,$empresa,$senha,$acesso);
 
-    
     try{
         if($codeDAO->cadastraUsuario($usuario)){
             $_SESSION['message'] = "Usuário cadastrado com sucesso!";
@@ -167,20 +154,17 @@ if(isset($_POST['cadastra_u'])){
             header("Location: ../view/cadastro_u.php");
             exit(0);
         }
-    }
-    
+    }    
     catch(PDOException $e){
         $_SESSION['messageerror'] = "Usuário NÃO foi cadastrado!";
         //$_SESSION['messageerror'] = "Erro: " . $e->getMessage();
         header("Location: ../view/cadastro_u.php");
         exit();
-    }
-    
+    }   
 }
 
 
-if(isset($_POST['cadastra_e'])){
-    
+if(isset($_POST['cadastra_e'])){   
     $cnpj = $_POST['cnpj'];
     $nome = $_POST['nome'];
     $nome_fantasia = $_POST['nome_fantasia'];
@@ -190,7 +174,6 @@ if(isset($_POST['cadastra_e'])){
 
     $codeDAO = new codeDAO;
     $empresa = new Empresa($cnpj,$nome,$nome_fantasia,$endereco,$telefone,$responsavel);
-
 
     try{
         if($codeDAO->cadastraEmpresa($empresa)){
@@ -202,16 +185,15 @@ if(isset($_POST['cadastra_e'])){
             header("Location: ../view/cadastro_e.php");
             exit(0);
         }
-    }
-    
+    }  
     catch(PDOException $e){
         $_SESSION['messageerror'] = "Empresa NÃO foi cadastrada!";
         //$_SESSION['messageerror'] = "Erro: " . $e->getMessage();
         header("Location: ../view/cadastro_e.php");
         exit();
-    }
-    
+    }   
 }
+
 
 if(isset($_POST['edita_s'])){
     $usuario_id = $_POST['usuario_id'];
@@ -229,14 +211,11 @@ if(isset($_POST['edita_s'])){
     $empresa = $busca['empresa'];
     $acesso = $busca['acesso'];
 
-    
-
     if($nova_senha == $confirma_senha){
         $senha = password_hash($_POST['nova_senha'], PASSWORD_DEFAULT);
         $usuario = new Usuario($nome,$cpf,$cnh,$telefone,$endereco,$carro,$empresa,$senha,$acesso);
 
-        try {
-    
+        try {   
             if($codeDAO->editaSenha($usuario,$usuario_id)){
                 $_SESSION['message'] = "Senha atualizada com sucesso!";
                 header("Location: ../view/editar_u.php?id={$usuario_id}");
@@ -245,29 +224,21 @@ if(isset($_POST['edita_s'])){
                 $_SESSION['messageerror'] = "A senha NÃO foi atualizada!";
                 header("Location: ../view/editar_u.php?id={$usuario_id}");
                 exit(0);
-            }
-        
-        } 
-        
+            }       
+        }         
         catch(PDOException $e){
             $_SESSION['messageerror'] = "A senha NÃO foi atualizada!";
             //$_SESSION['messageerror'] = "Erro: " . $e->getMessage();
             header("Location: ../view/tabela_ep.php");
             exit(0);
-        }
-  
+        }  
     } else {
         $_SESSION['messageerror'] = "As senhas não são iguais!";
         header("Location: ../view/editar_s.php?id={$usuario_id}");
         exit(0);
-    } 
-    
-    
-    
-    
-
-    
+    }   
 }
+
 
 if(isset($_POST['edita_sl'])){
     $usuario_id = $_POST['usuario_id'];
@@ -291,8 +262,7 @@ if(isset($_POST['edita_sl'])){
             $senha = password_hash($_POST['nova_senha'], PASSWORD_DEFAULT);
             $usuario = new Usuario($nome,$cpf,$cnh,$telefone,$endereco,$carro,$empresa,$senha,$acesso);
     
-            try {
-        
+            try {       
                 if($codeDAO->editaSenha($usuario,$usuario_id)){
                     $_SESSION['message'] = "Senha atualizada com sucesso!";
                     header("Location: ../index.php");
@@ -301,17 +271,14 @@ if(isset($_POST['edita_sl'])){
                     $_SESSION['messageerror'] = "A senha NÃO foi atualizada!";
                     header("Location: ../view/editar_sl.php");
                     exit(0);
-                }
-            
-            } 
-            
+                }           
+            }            
             catch(PDOException $e){
                 $_SESSION['messageerror'] = "A senha NÃO foi atualizada!";
                 //$_SESSION['messageerror'] = "Erro: " . $e->getMessage();
                 header("Location: ../view/editar_sl.php");
                 exit(0);
-            }
-      
+            }     
         } else {
             $_SESSION['messageerror'] = "As senhas não são iguais!";
             header("Location: ../view/editar_sl.php");
@@ -321,9 +288,7 @@ if(isset($_POST['edita_sl'])){
         $_SESSION['messageerror'] = "Impossível atualizar, incompatibilidade de ID";
         header("Location: ../index.php");
         exit(0);
-    }
-    
-    
+    }    
 }
 
 

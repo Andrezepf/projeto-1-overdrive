@@ -37,7 +37,6 @@ class Usuario{
    
     public function setNome($nome){
         $this->nome = $nome;
-
         return $this;
     }
 
@@ -49,7 +48,6 @@ class Usuario{
  
     public function setCpf($cpf){
         $this->cpf = $cpf;
-
         return $this;
     }
 
@@ -61,7 +59,6 @@ class Usuario{
 
     public function setCnh($cnh){
         $this->cnh = $cnh;
-
         return $this;
     }
 
@@ -73,7 +70,6 @@ class Usuario{
  
     public function setTelefone($telefone){
         $this->telefone = $telefone;
-
         return $this;
     }
 
@@ -85,7 +81,6 @@ class Usuario{
 
     public function setEndereco($endereco){
         $this->endereco = $endereco;
-
         return $this;
     }
 
@@ -97,7 +92,6 @@ class Usuario{
 
     public function setCarro($carro){
         $this->carro = $carro;
-
         return $this;
     }
 
@@ -109,7 +103,6 @@ class Usuario{
 
     public function setEmpresa($empresa){
         $this->empresa = $empresa;
-
         return $this;
     }
 
@@ -121,7 +114,6 @@ class Usuario{
 
     public function setSenha($senha){
         $this->senha = $senha;
-
         return $this;
     }
 
@@ -133,7 +125,6 @@ class Usuario{
  
     public function setAcesso($acesso){
         $this->acesso = $acesso;
-
         return $this;
     }
 }

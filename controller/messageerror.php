@@ -8,6 +8,6 @@ if(isset($_SESSION['messageerror'])) :
 </div>
 
 <?php 
-    unset($_SESSION['messageerror']);
-    endif;
+unset($_SESSION['messageerror']);
+endif;
 ?>

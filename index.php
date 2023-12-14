@@ -48,55 +48,60 @@ $codeDAO = new codeDAO;
             <li class="nav-item">
               <a class="nav-link" href="view/tabela_ep.php">Empresas</a>
             </li>
-              <li class="nav-item">
+            <li class="nav-item">
               <a class="nav-link" href="controller/logout.php">Logout</a>
             </li>
-            <?php
-        }
-        ?>
+          <?php
+          }
+          ?>
         </ul>      
       </div>
     </div>
   </nav>
-
   <div class="py-5">
       <div class="container">
           <div class="row justify-content-center">
               <div class="col-md-5">
                   <?php include('./controller/message.php'); ?>
                   <?php include('./controller/messageerror.php'); ?>
-                  <div class="card">
-                      <div class="card-header">
+                  <div class="card">                    
                       <?php
-                          if(!isset($_SESSION['acesso'])){        
+                      if(!isset($_SESSION['acesso'])){        
                       ?>
+                          <div class="card-header">
                               <h1>Bem vindo(a)!</h1>
+                          </div>
+                          <div class="card-body">
                               <p>Esta é uma aplicação CRUD desenvolvida por André Zepf durante o programa de estágio da Overdrive + Sol Agora e busca exemplificar os conhecimentos adquiridos durante essa primeira etapa. Espero que goste ;)</p>
                               <p>Você pode começar fazendo o login através do botão abaixo ou na opção "login" no cabeçalho.</p>
                               <a href="view/login.php" class="btn btn-dark btn-lg mt-3 col-lg-12">Login</a>
+                          </div>
                       <?php
-                          } else {
+                      } else {
                       ?>
-                              <h3>Olá, <?php echo $_SESSION['nome'];?></h3>
-                                      
-                              </div>
-                              <div class="card-body">
-                                  <p>Com o nível de acesso que você possui é possível:</p>
-                                  <ul>
-                                      <li>Alterar sua senha</li>
-                                      <li>Visualizar a lista de Funcionários</li>
-                                      <li>Visualizar a lista de Empresas</li>
-                                      <?php
-                                          if($_SESSION['acesso'] == 1){
-                                      ?>
-                                            <li>Editar, Excluir e Atualizar Funcionários</li>
-                                            <li>Editar, Excluir e Atualizar Empresas</li>
-                                      
-                                      <?php } ?>
-                                      <p><a href="view/editar_sl.php" class="btn btn-danger float-end mt-2">Alterar sua senha</a></p>   
-                          <?php } ?>           
-                          </ul>  
-                      </div> 
+                          <div class="card-header">
+                              <h3>Olá, <?php echo $_SESSION['nome'];?></h3>                                      
+                          </div>   
+                          <div class="card-body">
+                              <p>Com o nível de acesso que você possui é possível:</p>
+                              <ul>
+                                  <li>Alterar sua senha</li>
+                                  <li>Visualizar a lista de Funcionários</li>
+                                  <li>Visualizar a lista de Empresas</li>
+                                  <?php
+                                  if($_SESSION['acesso'] == 1){
+                                  ?>
+                                      <li>Editar, Excluir e Atualizar Funcionários</li>
+                                      <li>Editar, Excluir e Atualizar Empresas</li>                                      
+                                  <?php 
+                                  } 
+                                  ?>
+                                  <p><a href="view/editar_sl.php" class="btn btn-danger float-end mt-2">Alterar sua senha</a></p>   
+                              </ul>  
+                          </div> 
+                      <?php 
+                      } 
+                      ?>           
                   </div>       
               </div>                     
           </div>
