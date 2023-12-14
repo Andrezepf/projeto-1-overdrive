@@ -34,7 +34,7 @@ $codeDAO = new codeDAO;
                         </div>
                         <div class="mb-3">
                             <label>Telefone</label>
-                            <input type="tel" name="telefone" class="form-control" required minlength="9" maxlength="15" placeholder="DDD + Número" onkeyup="handlePhone(event)">
+                            <input type="tel" name="telefone" class="form-control" required minlength="9" maxlength="15" placeholder="DDD + Número" onkeyup="maskphone(event)">
                         </div>
                         <div class="mb-3">
                             <label>Endereço</label>
