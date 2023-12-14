@@ -72,7 +72,7 @@ $codeDAO = new codeDAO;
                               <h1>Bem vindo(a)!</h1>
                           </div>
                           <div class="card-body">
-                              <p>Esta é uma aplicação CRUD desenvolvida por André Zepf durante o programa de estágio da Overdrive + Sol Agora e busca exemplificar os conhecimentos adquiridos durante essa primeira etapa. Espero que goste ;)</p>
+                              <p>Esta é uma aplicação CRUD desenvolvida por André Zepf durante o programa de estágio da Overdrive + Sol Agora e busca exemplificar os conhecimentos adquiridos durante essa primeira etapa. Espero que goste!</p>
                               <p>Você pode começar fazendo o login através do botão abaixo ou na opção "login" no cabeçalho.</p>
                               <a href="view/login.php" class="btn btn-dark btn-lg mt-3 col-lg-12">Login</a>
                           </div>

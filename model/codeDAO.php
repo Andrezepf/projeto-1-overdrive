@@ -17,8 +17,7 @@ class codeDAO{
     public function cadastraUsuario($usuario){
         
         $query = "INSERT INTO usuario (nome, cpf, cnh, telefone, endereco, carro, empresa, senha, acesso) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-     
-        
+             
         $dados = array(
             $usuario->getNome(),
             $usuario->getCpf(),
@@ -40,17 +39,18 @@ class codeDAO{
     }
 
 
-    public function cadastraEmpresa($empresa)
-    {
+    public function cadastraEmpresa($empresa){
+
         $query = "INSERT INTO empresa (cnpj,nome,nome_fantasia,endereco,telefone,responsavel) VALUES (?,?,?,?,?,?) ";
 
         $dados = array(
-        $empresa->getCnpj(),
-        $empresa->getNome(),
-        $empresa->getNome_fantasia(),
-        $empresa->getEndereco(),
-        $empresa->getTelefone(),
-        $empresa->getResponsavel());
+            $empresa->getCnpj(),
+            $empresa->getNome(),
+            $empresa->getNome_fantasia(),
+            $empresa->getEndereco(),
+            $empresa->getTelefone(),
+            $empresa->getResponsavel()
+        );
 
         $query_run = $this->banco->prepare($query);
         
@@ -62,12 +62,11 @@ class codeDAO{
     }
 
 
-    public function editaUsuario($usuario,$usuario_id)
-    {
+    public function editaUsuario($usuario,$usuario_id){
+
         $query = "UPDATE usuario SET nome = ?, cpf = ?, cnh = ? , telefone = ? , endereco= ? , carro = ?, empresa = ?, senha = ? , acesso = ? WHERE u_id = ?";
         
         $query_run = $this->banco->prepare($query);
-    
 
         $dados=array(
             $usuario->getNome(),
@@ -90,14 +89,12 @@ class codeDAO{
     }
 
 
+    public function editaEmpresa($empresa,$empresa_id){
 
-    public function editaEmpresa($empresa,$empresa_id)
-    {
         $query = "UPDATE empresa SET cnpj = ?, nome = ?, nome_fantasia = ?,  endereco = ?, telefone = ?, responsavel= ? WHERE e_id = ?";
         
         $query_run = $this->banco->prepare($query);
     
-
         $dados=array(
             $empresa->getCnpj(),
             $empresa->getNome(),
@@ -116,13 +113,12 @@ class codeDAO{
     }
 
 
-    public function editaSenha($usuario,$usuario_id)
-    {
+    public function editaSenha($usuario,$usuario_id){
+
         $query = "UPDATE usuario SET senha = ? WHERE u_id = ?";
         
         $query_run = $this->banco->prepare($query);
     
-
         $dados=array(            
             $usuario->getSenha(),
             $usuario_id
@@ -136,9 +132,8 @@ class codeDAO{
     }
 
 
+    public function infoUsuario($usuario_id){
 
-    public function infoUsuario($usuario_id)
-    {
         $query = "SELECT * FROM usuario WHERE u_id = :id";
 
         $query_run = $this->banco->prepare($query);
@@ -167,8 +162,8 @@ class codeDAO{
     }
 
 
-    public function deletaUsuario($u_id)
-    {
+    public function deletaUsuario($u_id){
+
         $query = "DELETE FROM usuario WHERE u_id = ?";
         $dados = array($u_id);
         $query_run = $this->banco->prepare($query);
@@ -179,8 +174,8 @@ class codeDAO{
         }
     }
 
-    public function deletaEmpresa($e_id)
-    {
+    public function deletaEmpresa($e_id){
+
         $query = "DELETE FROM empresa WHERE e_id = ?";
         $dados = array($e_id);
         $query_run = $this->banco->prepare($query);
@@ -192,8 +187,8 @@ class codeDAO{
     }
 
 
-    public function consultaEmpresa($e_id)
-    {
+    public function consultaEmpresa($e_id){
+
         $query = "SELECT COUNT(*) FROM usuario WHERE empresa = ?";
         $dados = array($e_id);
         $query_run = $this->banco->prepare($query);
@@ -281,7 +276,6 @@ class codeDAO{
             'acesso' => $dados[0]['acesso']
             );
         }
- 
     }
 
     public function localizarEmpresa($empresa_id){
@@ -304,12 +298,11 @@ class codeDAO{
             'responsavel' => $dados[0]['responsavel']
             );
         }
- 
     }
 
 
-    public function login($cpf,$senha)
-    {
+    public function login($cpf,$senha){
+
         $query = $this->banco->prepare("SELECT * FROM usuario WHERE cpf = :cpf");
 
         $query->bindParam(':cpf',$cpf);
@@ -332,8 +325,7 @@ class codeDAO{
         } else {
             $_SESSION['messageerror'] = "Falha ao logar! CPF ou senha incorretos!";
         }
-    }
-    
+    }    
 }
 
 ?>
