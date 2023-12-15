@@ -30,7 +30,7 @@ $codeDAO = new codeDAO;
                         </div>
                         <div class="mb-3">
                             <label>CNH</label>
-                            <input type="text" name="cnh" class="form-control" required minlength="10" maxlength="11" placeholder="Insira o número da CNH">
+                            <input type="text" name="cnh" class="form-control" required minlength="10" maxlength="11" placeholder="Insira o número da CNH" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                         </div>
                         <div class="mb-3">
                             <label>Telefone</label>

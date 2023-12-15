@@ -91,8 +91,8 @@ $codeDAO = new codeDAO;
                                   <?php
                                   if($_SESSION['acesso'] == 1){
                                   ?>
-                                      <li>Editar, Excluir e Atualizar Funcionários</li>
-                                      <li>Editar, Excluir e Atualizar Empresas</li>                                      
+                                      <li>Editar, Excluir e Adicionar Funcionários</li>
+                                      <li>Editar, Excluir e Adicionar Empresas</li>                                      
                                   <?php 
                                   } 
                                   ?>
