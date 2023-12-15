@@ -2,10 +2,10 @@
 session_start();
 include('../includes/header.php');
 include('../includes/navbar.php');
-require '../controller/conexao.php';
+require('../model/codeDAO.php');
 require '../controller/protectadm.php';
+$codeDAO = new codeDAO;
 ?>
-
 
 <div class="container mt-5">    
     <div class="row justify-content-center">
@@ -20,22 +20,21 @@ require '../controller/protectadm.php';
                 </div>
                 <div class="card-body">
                     <form action="../controller/code.php" method="post">
-
                         <div class="mb-3">
                             <label>Nome</label>
                             <input type="text" name="nome" class="form-control" required minlength="5" maxlength="255" placeholder="Insira Nome">
                         </div>
                         <div class="mb-3">
                             <label>CPF</label>
-                            <input type="text" name="cpf" class="form-control" required minlength="11" maxlength="11" placeholder="Insira CPF (somente números)">
+                            <input type="text" name="cpf" class="form-control" required minlength="14" maxlength="14" placeholder="Insira CPF (somente números)" onkeyup="maskcpf(event)">
                         </div>
                         <div class="mb-3">
                             <label>CNH</label>
-                            <input type="text" name="cnh" class="form-control" required minlength="10" maxlength="11" placeholder="Insira o número da CNH">
+                            <input type="text" name="cnh" class="form-control" required minlength="10" maxlength="11" placeholder="Insira o número da CNH" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                         </div>
                         <div class="mb-3">
                             <label>Telefone</label>
-                            <input type="text" name="telefone" class="form-control" required minlength="9" maxlength="15" placeholder="Insira Telefone">
+                            <input type="tel" name="telefone" class="form-control" required minlength="9" maxlength="15" placeholder="DDD + Número" onkeyup="maskphone(event)">
                         </div>
                         <div class="mb-3">
                             <label>Endereço</label>
@@ -53,15 +52,11 @@ require '../controller/protectadm.php';
                             <label>Empresa</label>
                             <select name="empresa" id="empresa" class="form-select" required>
                                 <option value="">Selecione uma Empresa...</option>
-                            <?php
-                            $query = "SELECT * FROM empresa";
-                                $query_run = mysqli_query($mysqli, $query);
-
-                                if(mysqli_num_rows($query_run) > 0){
-                                    foreach($query_run as $dados){                                        
-                                        echo "<option value='{$dados['e_id']}'>{$dados['nome_fantasia']}</option>";                                       
-                                    }
-                                }
+                                <?php                           
+                                $resultado = $codeDAO->selectEmpresa();                               
+                                foreach($resultado as $dados){                                        
+                                    echo "<option value='{$dados['e_id']}'>{$dados['nome_fantasia']}</option>";                                       
+                                }                               
                                 ?>
                             </select>
                         </div>
@@ -81,16 +76,6 @@ require '../controller/protectadm.php';
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
 
 
 <?php

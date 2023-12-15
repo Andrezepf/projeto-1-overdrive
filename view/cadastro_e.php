@@ -2,10 +2,10 @@
 session_start();
 include('../includes/header.php');
 include('../includes/navbar.php');
-require '../controller/conexao.php';
+require('../model/codeDAO.php');
 require '../controller/protectadm.php';
+$codeDAO = new codeDAO;
 ?>
-
 
 <div class="container mt-5">   
     <div class="row justify-content-center">
@@ -20,10 +20,9 @@ require '../controller/protectadm.php';
                 </div>
                 <div class="card-body">
                     <form action="../controller/code.php" method="post">
-
                         <div class="mb-3">
                             <label>CNPJ</label>
-                            <input type="text" name="cnpj" class="form-control" required minlength="14" maxlength="14" placeholder="Insira CNPJ (somente números)">
+                            <input type="text" name="cnpj" class="form-control" required minlength="18" maxlength="18" placeholder="Insira CNPJ (somente números)" onkeyup="maskcnpj(event)">
                         </div>
                         <div class="mb-3">
                             <label>Nome</label>
@@ -39,7 +38,7 @@ require '../controller/protectadm.php';
                         </div>
                         <div class="mb-3">
                             <label>Telefone</label>
-                            <input type="text" name="telefone" class="form-control" required minlength="9" maxlength="15" placeholder="Insira o Telefone da Empresa">
+                            <input type="text" name="telefone" class="form-control" required minlength="9" maxlength="15" placeholder="Insira o Telefone da Empresa" onkeyup="maskphone(event)">
                         </div>
                         <div class="mb-3">
                             <label>Responsável</label>
@@ -54,16 +53,6 @@ require '../controller/protectadm.php';
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
 
 
 <?php

@@ -1,49 +1,26 @@
 <?php
+if(!isset($_SESSION)){
+    session_start();
+}
 include('../includes/header.php');
 include('../includes/navbar.php');
-include('../controller/conexao.php');
+require('../model/codeDAO.php');
+$codeDAO = new codeDAO;
 ?>
 
 <?php 
-
 if(isset($_POST['cpf']) || isset($_POST['senha'])){
     if(strlen($_POST['cpf']) == 0){
         $_SESSION['messageerror'] = "Preencha seu CPF.";
     } else if(strlen($_POST['senha']) == 0){
         $_SESSION['messageerror'] = "Preencha sua senha.";
     } else {
+        $cpf = $_POST['cpf'];
+        $senha = $_POST['senha'];
 
-        $cpf = $mysqli->real_escape_string($_POST['cpf']);
-        $senha = $mysqli->real_escape_string($_POST['senha']);
-
-        $sql_code = "SELECT * FROM usuario WHERE cpf = '$cpf'";
-        $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
-
-        $quantidade = $sql_query->num_rows;
-
-        if($quantidade == 1){
-            
-            $usuario = $sql_query->fetch_assoc();
-
-            if(!isset($_SESSION)){
-                session_start();
-            }
-            if(password_verify($senha, $usuario['senha'])){
-                $_SESSION['nome'] = $usuario['nome'];
-                $_SESSION['u_id'] = $usuario['u_id'];
-                $_SESSION['acesso'] = $usuario['acesso'];
-
-                header("Location: ../index.php");
-            } else {
-                $_SESSION['messageerror'] = "Falha ao logar! CPF ou senha incorretos!";
-            }
-        } else {
-            $_SESSION['messageerror'] = "Falha ao logar! CPF ou senha incorretos!";
-        }
-
+        $login = $codeDAO->login($_POST['cpf'],$_POST['senha']);
     }
 }
-
 ?>
 
 <div class="py-5">    
@@ -57,11 +34,10 @@ if(isset($_POST['cpf']) || isset($_POST['senha'])){
                         <h4>Login</h4>
                     </div>
                     <div class="card-body">
-
                         <form action="" method="post">
                             <div class="form-group mb-3">
                                 <label>CPF</label>
-                                <input type="text" name="cpf" placeholder="Insira seu CPF (somente números)" class="form-control">
+                                <input type="text" name="cpf" placeholder="Insira seu CPF (somente números)" class="form-control" maxlength="14" onkeyup="maskcpf(event)">
                             </div>
                             <div class="form-group mb-3">
                                 <label>Senha</label>
@@ -80,6 +56,7 @@ if(isset($_POST['cpf']) || isset($_POST['senha'])){
         </div>
     </div>
 </div>
+
 
 <?php
 include('../includes/footer.php');
